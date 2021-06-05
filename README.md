@@ -5,7 +5,7 @@ This is just a simple repository that allows [cspell](https://github.com/streets
 To install:
 
 ```
-npm install -g git+https://github.com/streetsidesfotware/cspell-cli
+npm install -g git+https://github.com/streetsidesoftware/cspell-cli
 ```
 
 This will add the `cspell-cli` command to npm.
