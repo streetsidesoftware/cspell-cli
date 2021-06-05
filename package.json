@@ -1,0 +1,39 @@
+{
+  "name": "cspell-cli",
+  "version": "0.0.1",
+  "description": "CLI for cspell: A Spelling Checker for Code!",
+  "main": "index.js",
+  "bin": {
+    "cspell-cli": "index.js"
+  },
+  "scripts": {
+    "version-prerelease": "npm run version-release -- -p",
+    "version-release": "standard-version",
+    "test": "node ./index.js \"**\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streetsidesoftware/cspell-cli.git"
+  },
+  "keywords": [
+    "cspell"
+  ],
+  "author": "Jason Dent",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/streetsidesoftware/cspell-cli/issues"
+  },
+  "homepage": "https://github.com/streetsidesoftware/cspell-cli#readme",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "cspell": "^5.5.2"
+  },
+  "devDependencies": {
+    "standard-version": "^9.3.0"
+  }
+}
