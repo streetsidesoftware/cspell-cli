@@ -4,7 +4,6 @@
   "description": "CLI for cspell: A Spelling Checker for Code!",
   "main": "index.js",
   "bin": {
-    "cspell": "index.js",
     "cspell-cli": "index.js"
   },
   "scripts": {
