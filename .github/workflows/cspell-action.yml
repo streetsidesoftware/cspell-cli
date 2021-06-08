@@ -11,3 +11,9 @@ jobs:
         steps:
             - uses: actions/checkout@v2.3.4
             - uses: streetsidesoftware/cspell-action@v1.2.1
+              with:
+                  files: |
+                      **
+                      .*/**
+                  incremental_files_only: false
+
