@@ -8,10 +8,6 @@ on:
             - '**/package.json'
             - '**/package-lock.json'
     workflow_dispatch:
-        inputs:
-            updateSnapshots:
-                description: 'Update Integration Test snapshots (yes/no)'
-                default: 'yes'
     schedule:
         - cron: '0 12 * * 0'
 
