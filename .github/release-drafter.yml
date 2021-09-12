@@ -34,8 +34,8 @@ categories:
 change-template: |
   <details>
   <summary>$TITLE (#$NUMBER)</summary>
-  <br />
-  **➤** $TITLE (#$NUMBER)
+  
+  ### $TITLE (#$NUMBER)
 
   $BODY
   </details>
