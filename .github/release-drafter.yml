@@ -23,6 +23,10 @@ categories:
   - title: "Maintenance / Dependencies"
     labels:
       - "chore"
+    change-template: |
+      - $TITLE (#$NUMBER)
+  - title: "Dependabot"
+    labels:
       - "dependencies"
     change-template: |
       - $TITLE (#$NUMBER)
