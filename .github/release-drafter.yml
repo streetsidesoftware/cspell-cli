@@ -58,13 +58,11 @@ version-resolver:
 exclude-labels:
   - "exclude"
 autolabeler:
-  - label: "dependencies"
-    title:
-      - "/ci: Workflow Bot/i"
   - label: "chore"
     title:
       - "/chore/i"
       - "/^ci[:](?! Workflow Bot)/i"
+      - "/ci: Workflow Bot/i"
   - label: "documentation"
     files:
       - "/docs/**/*.md"
