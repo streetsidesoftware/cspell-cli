@@ -32,9 +32,13 @@ categories:
       - $TITLE (#$NUMBER)
 
 change-template: |
+  <details>
+  <summary>$TITLE (#$NUMBER)</summary>
+  <br />
   **➤** $TITLE (#$NUMBER)
 
   $BODY
+  </details>
 
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
