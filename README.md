@@ -1,5 +1,7 @@
 # cspell-cli
 
+## Setup [pre-commit](https://pre-commit.com) Hook
+
 This repository enables using [cspell](https://github.com/streetsidesoftware/cspell) as a [pre-commit](https://pre-commit.com) hook.
 
 ```yaml
@@ -11,13 +13,7 @@ repos:
     - id: cspell
 ```
 
-It also allows the `cspell-cli` to be installed directly from github:
-
-```
-npm install -g git+https://github.com/streetsidesoftware/cspell-cli
-```
-
-This will add the `cspell-cli` command to npm.
+## Setup Custom Dictionary
 
 To use a custom dictionary with the `pre-commit` hook, create either a `cspell.config.yaml` or `cspell.json` file in your project's root directory.
 
@@ -48,3 +44,13 @@ dictionaries:
 ```
 
 If you installed the [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) for VS Code, this can be done automatically from the command palette by running "Spell: Create a CSpell configuration file".
+
+## Install from GitHub
+
+It also allows the `cspell-cli` to be installed directly from github:
+
+```
+npm install -g git+https://github.com/streetsidesoftware/cspell-cli
+```
+
+This will add the `cspell-cli` command to npm.
