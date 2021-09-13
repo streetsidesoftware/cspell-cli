@@ -8,7 +8,7 @@
   },
   "scripts": {
     "version-prerelease": "npm run version-release -- -p",
-    "version-release": "standard-version",
+    "version-release": "npx standard-version",
     "test": "node ./index.js \"**\""
   },
   "repository": {
@@ -28,12 +28,9 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=12.13.0"
   },
   "dependencies": {
     "cspell": "^5.9.1"
-  },
-  "devDependencies": {
-    "standard-version": "^9.3.0"
   }
 }
