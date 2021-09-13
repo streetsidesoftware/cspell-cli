@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/streetsidesoftware/cspell-cli#readme",
   "files": [
+    ".pre-commit-hooks.yaml",
     "index.js"
   ],
   "engines": {
