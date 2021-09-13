@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.6.6](https://github.com/streetsidesoftware/cspell-cli/compare/v5.6.5...v5.6.6) (2021-09-13)
+
+
+### Bug Fixes
+
+* Create .pre-commit-hooks.yaml ([#48](https://github.com/streetsidesoftware/cspell-cli/issues/48)) ([982d5b1](https://github.com/streetsidesoftware/cspell-cli/commit/982d5b1f0b3ffa2676888a40e81194b32e1a6d61))
+
 ### [5.6.5](https://github.com/streetsidesoftware/cspell-cli/compare/v5.6.4...v5.6.5) (2021-09-12)
 
 
