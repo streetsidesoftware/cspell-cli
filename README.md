@@ -21,8 +21,9 @@ This will add the `cspell-cli` command to npm.
 
 To use a custom dictionary with the `pre-commit` hook, create either a `cspell.config.yaml` or `cspell.json` file in your project's root directory.
 
+`cspell.config.yaml`
+
 ```yaml
-# cspell.config.yaml
 dictionaryDefinitions:
   - name: myWords
     path: ./path/to/cSpell_dict.txt
@@ -31,14 +32,15 @@ dictionaries:
   - myWords
 ```
 
+`cSpell.json`
+
 ```json
-// cSpell.json
 {
   "dictionaryDefinitions": [
     {
-      "addWords": true,
       "name": "myWords",
-      "path": "./path/to/cSpell_dict.txt"
+      "path": "./path/to/cSpell_dict.txt",
+      "addWords": true
     }
   ],
   "dictionaries": ["myWords"]
