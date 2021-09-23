@@ -8,5 +8,4 @@
   entry: cspell-cli
   language: node
   types: [file]
-  verbose: true
   args: [--no-must-find-files]
