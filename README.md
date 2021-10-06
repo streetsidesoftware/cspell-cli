@@ -47,10 +47,8 @@ If you installed the [Code Spell Checker extension](https://marketplace.visualst
 
 ## Install from GitHub
 
-It also allows the `cspell-cli` to be installed directly from github:
+This repo also allows installing the `cspell-cli` directly from GitHub:
 
 ```
 npm install -g git+https://github.com/streetsidesoftware/cspell-cli
 ```
-
-This will add the `cspell-cli` command to npm.
