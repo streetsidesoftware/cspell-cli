@@ -12,3 +12,4 @@
     - --no-must-find-files
     - --no-progress
     - --no-summary
+    - --gitignore
