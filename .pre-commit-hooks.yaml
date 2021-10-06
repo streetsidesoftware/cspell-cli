@@ -7,7 +7,7 @@
   description: This hook runs CSpell spellchecker
   entry: cspell-cli
   language: node
-  types: [file]
+  types: [text]
   args:
     - --no-must-find-files
     - --no-progress
