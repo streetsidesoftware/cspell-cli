@@ -32,6 +32,6 @@
     "node": ">=12.13.0"
   },
   "dependencies": {
-    "cspell": "^5.12.1"
+    "cspell": "^5.12.2"
   }
 }
