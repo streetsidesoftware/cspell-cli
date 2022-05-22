@@ -1,73 +1,73 @@
 name: Update Dependencies Main
 
 on:
-    push:
-        branches:
-            - main
-        paths:
-            - '**/package.json'
-            - '**/package-lock.json'
-    workflow_dispatch:
-    schedule:
-        - cron: '0 12 * * 0'
+  push:
+    branches:
+      - main
+    paths:
+      - "**/package.json"
+      - "**/package-lock.json"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 0"
 
 jobs:
-    update-dependencies:
-        if: github.repository_owner == 'streetsidesoftware'
-        runs-on: ubuntu-latest
-        env:
-            NEW_BRANCH: 'update-dependencies-main'
-            REF_BRANCH: main
-        steps:
-            - name: Start
-              run: |
-                  echo "${{ toJson(github.event.inputs) }}"
-            - name: Checkout code
-              uses: actions/checkout@v3
-              with:
-                  ref: ${{ env.REF_BRANCH }}
-            - name: Update Root
-              run: |
-                  npm i
-                  npx npm-check-updates -t minor -u
-                  rm -rf node_modules package-lock.json
-            - name: Install
-              run: npm install
-            - name: Has changes
-              run: |
-                  git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
-                  git --no-pager diff --compact-summary
-            - name: Gen Body
-              run: |
-                  echo "git_body<<DIFF" >> $GITHUB_ENV
-                  echo "### Workflow Bot -- Update ALL Dependencies" >> $GITHUB_ENV
-                  echo "" >> $GITHUB_ENV
-                  echo "#### Package.json"  >> $GITHUB_ENV
-                  echo "" >> $GITHUB_ENV
-                  echo "\`\`\`\`\`\`diff"  >> $GITHUB_ENV
-                  git --no-pager diff package.json  >> $GITHUB_ENV
-                  echo "\`\`\`\`\`\`"  >> $GITHUB_ENV
-                  echo "" >> $GITHUB_ENV
-                  echo "#### Summary"  >> $GITHUB_ENV
-                  echo "" >> $GITHUB_ENV
-                  git --no-pager diff --compact-summary >> $GITHUB_ENV
-                  echo "DIFF" >> $GITHUB_ENV
-            - name: Echo git_status
-              run: echo ${{ env.git_status }}
-            - uses: tibdex/github-app-token@v1.5 # cspell:ignore tibdex
-              if: env.git_status == 'dirty'
-              id: generate-token
-              with:
-                  app_id: ${{ secrets.AUTOMATION_APP_ID }}
-                  private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
-            - name: Create Pull Request
-              if: env.git_status == 'dirty'
-              uses: peter-evans/create-pull-request@v4
-              with:
-                  commit-message: 'ci: Workflow Bot -- Update ALL Dependencies'
-                  branch: ${{ env.NEW_BRANCH }}
-                  base: ${{ env.REF_BRANCH }}
-                  title: 'ci: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})'
-                  token: ${{ steps.generate-token.outputs.token }}
-                  body: ${{ env.git_body }}
-                  delete-branch: true
+  update-dependencies:
+    if: github.repository_owner == 'streetsidesoftware'
+    runs-on: ubuntu-latest
+    env:
+      NEW_BRANCH: "update-dependencies-main"
+      REF_BRANCH: main
+    steps:
+      - name: Start
+        run: |
+          echo "${{ toJson(github.event.inputs) }}"
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.REF_BRANCH }}
+      - name: Update Root
+        run: |
+          npm i
+          npx npm-check-updates -t minor -u
+          rm -rf node_modules package-lock.json
+      - name: Install
+        run: npm install
+      - name: Has changes
+        run: |
+          git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
+          git --no-pager diff --compact-summary
+      - name: Gen Body
+        run: |
+          echo "git_body<<DIFF" >> $GITHUB_ENV
+          echo "### Workflow Bot -- Update ALL Dependencies" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "#### Package.json"  >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "\`\`\`\`\`\`diff"  >> $GITHUB_ENV
+          git --no-pager diff package.json  >> $GITHUB_ENV
+          echo "\`\`\`\`\`\`"  >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "#### Summary"  >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          git --no-pager diff --compact-summary >> $GITHUB_ENV
+          echo "DIFF" >> $GITHUB_ENV
+      - name: Echo git_status
+        run: echo ${{ env.git_status }}
+      - uses: tibdex/github-app-token@v1.5 # cspell:ignore tibdex
+        if: env.git_status == 'dirty'
+        id: generate-token
+        with:
+          app_id: ${{ secrets.AUTOMATION_APP_ID }}
+          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
+      - name: Create Pull Request
+        if: env.git_status == 'dirty'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "ci: Workflow Bot -- Update ALL Dependencies"
+          branch: ${{ env.NEW_BRANCH }}
+          base: ${{ env.REF_BRANCH }}
+          title: "ci: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
+          token: ${{ steps.generate-token.outputs.token }}
+          body: ${{ env.git_body }}
+          delete-branch: true
