@@ -1,63 +1,63 @@
 name: Test
 on:
-    pull_request:
-    push:
-        branches:
-            - main
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-    test-old-node-versions:
-        runs-on: ${{ matrix.os }}
+  test-old-node-versions:
+    runs-on: ${{ matrix.os }}
 
-        strategy:
-            matrix:
-                node-version:
-                    # List of supported node versions (latest is tested in `test-os`)
-                    - 12.x
-                    - 14.x
-                    - 16.x
+    strategy:
+      matrix:
+        node-version:
+          # List of supported node versions (latest is tested in `test-os`)
+          - 14.x
+          - 16.x
+          - 18.x
 
-                os:
-                    - ubuntu-latest
+        os:
+          - ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
-            - run: npm ci
-            - run: npm test
+      - run: npm ci
+      - run: npm test
 
-            # Ensure the repository is clean after build & test
-            - run: git --no-pager diff --compact-summary --exit-code
+      # Ensure the repository is clean after build & test
+      - run: git --no-pager diff --compact-summary --exit-code
 
-    test-os:
-        runs-on: ${{ matrix.os }}
+  test-os:
+    runs-on: ${{ matrix.os }}
 
-        strategy:
-            matrix:
-                node-version:
-                    # Test the latest node version here, move older versions to `test-old-node-versions`
-                    - 16.x
+    strategy:
+      matrix:
+        node-version:
+          # Test the latest node version here, move older versions to `test-old-node-versions`
+          - 16.x
 
-                os:
-                    - windows-latest
-                    - macos-latest
+        os:
+          - windows-latest
+          - macos-latest
 
-        steps:
-            - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-            - run: npm ci
-            - run: npm test
+      - run: npm ci
+      - run: npm test
 
-            # Ensure the repository is clean after build & test
-            - run: git --no-pager diff --compact-summary --exit-code
+      # Ensure the repository is clean after build & test
+      - run: git --no-pager diff --compact-summary --exit-code

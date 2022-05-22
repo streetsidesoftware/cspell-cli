@@ -23,24 +23,20 @@ categories:
   - title: "Maintenance / Dependencies"
     labels:
       - "chore"
-    change-template: |
-      - $TITLE (#$NUMBER)
   - title: "Dependabot"
     labels:
       - "dependencies"
-    change-template: |
-      - $TITLE (#$NUMBER)
 
 change-template: |
   <details>
   <summary>$TITLE (#$NUMBER)</summary>
-  
+
   ### $TITLE (#$NUMBER)
 
   $BODY
-  
+
   ---
-  
+
   </details>
 
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.

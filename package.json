@@ -31,9 +31,9 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14"
   },
   "dependencies": {
-    "cspell": "^5.21.2"
+    "cspell": "^6.0.0"
   }
 }
