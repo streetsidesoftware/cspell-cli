@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/streetsidesoftware/cspell-cli/compare/v5.10.0...v6.0.0) (2022-05-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to CSpell 6.0.0 (#141)
+
+### Features
+
+* Upgrade to CSpell 6.0.0 ([#141](https://github.com/streetsidesoftware/cspell-cli/issues/141)) ([df3c79b](https://github.com/streetsidesoftware/cspell-cli/commit/df3c79bcd9c5745e4ebdeb5cc250ead15324ce1e))
+
+
+### Bug Fixes
+
+* Update README.md ([#143](https://github.com/streetsidesoftware/cspell-cli/issues/143)) ([fa9f036](https://github.com/streetsidesoftware/cspell-cli/commit/fa9f036a6c61ce4c1e4618a859be3fe3771540a5))
+
 ## [5.10.0](https://github.com/streetsidesoftware/cspell-cli/compare/v5.9.1...v5.10.0) (2022-05-22)
 
 
