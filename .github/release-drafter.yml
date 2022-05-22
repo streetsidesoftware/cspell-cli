@@ -43,13 +43,18 @@ change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add
 version-resolver:
   major:
     labels:
-      - "major"
+      - major
+      - breaking
   minor:
     labels:
-      - "minor"
+      - minor
+      - feature
   patch:
     labels:
-      - "patch"
+      - patch
+      - chore
+      - fix
+      - documentation
   default: patch
 exclude-labels:
   - "exclude"
