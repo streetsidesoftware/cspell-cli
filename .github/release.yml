@@ -1,0 +1,23 @@
+# .github/release.yml
+
+changelog:
+  exclude:
+  categories:
+    - title: Breaking Changes
+      labels:
+        - Semver-Major
+        - breaking
+    - title: Features
+      labels:
+        - Semver-Minor
+        - feature
+    - title: Fixes
+      labels:
+        - fix
+        - dev
+    - title: Other Changes
+      labels:
+        - "*"
+    - title: Maintenance
+      labels:
+        - chore
