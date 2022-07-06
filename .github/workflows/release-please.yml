@@ -12,7 +12,6 @@ jobs:
         with:
           release-type: node
           package-name: cspell-cli
-          command: release-pr
 
       # The logic below handles the npm publication:
       - uses: actions/checkout@v3
