@@ -52,3 +52,9 @@ This repo also allows installing the `cspell-cli` directly from GitHub:
 ```
 npm install -g git+https://github.com/streetsidesoftware/cspell-cli
 ```
+
+## Versioning
+
+The major version of `cspell-cli` tries to match the major version of `cspell`.
+
+`minor` and `patch` versioning goes up independently from `cspell`.
