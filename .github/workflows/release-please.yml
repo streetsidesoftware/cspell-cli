@@ -10,8 +10,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          release-type: node
-          package-name: cspell-cli
+          command: manifest
 
       # The logic below handles the npm publication:
       - uses: actions/checkout@v3
