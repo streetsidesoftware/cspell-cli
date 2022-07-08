@@ -30,8 +30,6 @@ jobs:
         run: |
           npm i
           npm i cspell@latest
-      - name: CSpell Version
-        run: echo "CSPELL_VERSION=$(npx cspell -V)" >> $GITHUB_ENV
       - name: Install
         run: npm install
       - name: Has changes
@@ -54,9 +52,7 @@ jobs:
           git --no-pager diff --compact-summary >> $GITHUB_ENV
           echo "DIFF" >> $GITHUB_ENV
       - name: Echo git_status
-        run: |
-          echo "Status: ${{ env.git_status }}"
-          echo "CSpell Version: ${{ env.CSPELL_VERSION }}"
+        run: echo ${{ env.git_status }}
       - uses: tibdex/github-app-token@v1.5 # cspell:ignore tibdex
         if: env.git_status == 'dirty'
         id: generate-token
@@ -67,10 +63,10 @@ jobs:
         if: env.git_status == 'dirty'
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "fix: Update CSpell to ${{ env.CSPELL_VERSION }}"
+          commit-message: "fix: Update CSpell to latest"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "fix: Workflow Bot -- Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
+          title: "fix: Workflow Bot -- Update CSpell to latest (${{ env.REF_BRANCH }})"
           token: ${{ steps.generate-token.outputs.token }}
           body: ${{ env.git_body }}
           delete-branch: true
