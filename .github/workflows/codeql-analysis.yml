@@ -9,6 +9,7 @@ on:
     branches:
       - main
       - cspell4
+  workflow_dispatch:
   schedule:
     - cron: "0 23 * * 0"
 
