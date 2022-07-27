@@ -36,10 +36,29 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Calc metadata
+        id: meta
+        run: |
+          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
+          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
+          echo 'DOCKER_TAGS<<TAGS' >> $GITHUB_ENV
+          echo "
+          ghcr.io/streetsidesoftware/cspell:latest
+          ghcr.io/streetsidesoftware/cspell:$CSPELL_VERSION
+          TAGS" >> $GITHUB_ENV
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta2
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
       - name: Meta Data
         env:
-          META: ${{ toJSON(steps.meta.outputs) }}
-        run: echo "$META"
+          META2: ${{ toJSON(steps.meta2.outputs) }}
+        run: |
+          echo "$META2"
+          echo TAGS = $TAGS
 
       # - name: Build and push Docker image
       #   uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
