@@ -61,3 +61,13 @@ jobs:
 
       # Ensure the repository is clean after build & test
       - run: git --no-pager diff --compact-summary --exit-code
+
+  test-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker build -t cspell .
+      - run: docker run -v $(pwd):/workdir cspell
+
+# cspell:ignore workdir
