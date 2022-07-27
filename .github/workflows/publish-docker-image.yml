@@ -2,7 +2,7 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: Create and publish a Docker image
+name: Publish Docker Images
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }} # "streetsidesoftware/cspell-cli"
+  IMAGE_NAME: "streetsidesoftware/cspell"
 
 jobs:
   build-and-push-image:
@@ -23,6 +23,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: CSpell Version
+        run: |
+          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
+          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
+
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -31,15 +36,45 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta
+        id: meta2
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Calc metadata
+        id: meta
+        env:
+          TAGS: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.CSPELL_VERSION }}
+          IMAGE_LABELS: |
+            org.opencontainers.image.title=cspell
+            org.opencontainers.image.description=CSpell command line spell checker
+            org.opencontainers.image.url=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.url'] }}
+            org.opencontainers.image.source=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.source'] }}
+            org.opencontainers.image.version=${{ env.CSPELL_VERSION }}
+            org.opencontainers.image.created=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.created'] }}
+            org.opencontainers.image.revision=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.revision'] }}
+            org.opencontainers.image.licenses=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.licenses'] }}
+
+        run: |
+          echo 'DOCKER_TAGS<<TAGS'"
+          $TAGS
+          TAGS" >> $GITHUB_ENV
+          echo 'DOCKER_LABELS<<LABELS'"
+          $IMAGE_LABELS
+          LABELS" >> $GITHUB_ENV
+
+      - name: Echo Meta Data
+        run: |
+          echo tags = "$DOCKER_TAGS"
+          echo labels = "$DOCKER_LABELS"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ env.DOCKER_TAGS }}
+          labels: ${{ env.DOCKER_LABELS }}
+# cspell:ignore opencontainers
