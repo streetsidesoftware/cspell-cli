@@ -11,6 +11,15 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: "streetsidesoftware/cspell"
+  IMAGE_LABELS: |
+    org.opencontainers.image.title=cspell
+    org.opencontainers.image.description=CSpell command line spell checker
+    org.opencontainers.image.url=https://github.com/streetsidesoftware/cspell-cli
+    org.opencontainers.image.source=https://github.com/streetsidesoftware/cspell-cli
+    org.opencontainers.image.version=dev-pub-docker
+    org.opencontainers.image.created=2022-07-27T09:56:13.818Z
+    org.opencontainers.image.revision=ba818e864d0be73bc2f0577d10f0f9a27e10b4ba
+    org.opencontainers.image.licenses=MIT
 
 jobs:
   build-and-push-image:
@@ -35,24 +44,28 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Calc metadata
-        id: meta
-        run: |
-          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
-          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
-          echo 'DOCKER_TAGS<<TAGS' >> $GITHUB_ENV
-          echo "
-          $REGISTRY/$IMAGE_NAME:latest
-          ghcr.io/streetsidesoftware/cspell:latest
-          ghcr.io/streetsidesoftware/cspell:$CSPELL_VERSION
-          " >> $GITHUB_ENV
-          echo TAGS >> $GITHUB_ENV
-
       - name: Extract metadata (tags, labels) for Docker
         id: meta2
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Calc metadata
+        id: meta
+        env:
+          TAGS: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.CSPELL_VERSION }}
+
+        run: |
+          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
+          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
+          echo 'DOCKER_TAGS<<TAGS'"
+          $TAGS
+          TAGS" >> $GITHUB_ENV
+          echo 'DOCKER_LABELS<<LABELS'"
+          $IMAGE_LABELS
+          LABELS" >> $GITHUB_ENV
 
       - name: Meta Data
         env:
@@ -60,7 +73,7 @@ jobs:
           ENV: ${{ toJSON(env) }}
         run: |
           echo "$META2"
-          echo TAGS = $TAGS
+          echo TAGS = $DOCKER_TAGS
           echo $ENV
 
       # - name: Build and push Docker image
