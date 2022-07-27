@@ -7,9 +7,6 @@ name: Create and publish a Docker image
 on:
   workflow_dispatch:
   workflow_call:
-    secrets:
-      GITHUB_TOKEN:
-        required: true
 
 env:
   REGISTRY: ghcr.io
