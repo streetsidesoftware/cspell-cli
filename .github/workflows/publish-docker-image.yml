@@ -41,6 +41,10 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      # Setup custom tags and labels
+      # - reuse meta data from docker/metadata-action where possible
+      # - This contains is published as `streetsidesoftware/cspell` instead of `cspell-cli`
+      # - The version matches `cspell` and NOT `cspell-cli`.
       - name: Calc metadata
         id: meta
         env:
