@@ -1,8 +1,8 @@
-FROM node:16.16.0
+FROM node:16-alpine
 
 WORKDIR /app
 COPY package-lock.json package.json index.js ./
-RUN npm install --production
+RUN npm ci --omit=dev
 RUN npm install --global
 
 WORKDIR /workdir
