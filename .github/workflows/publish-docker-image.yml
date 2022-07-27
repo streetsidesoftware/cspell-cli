@@ -11,15 +11,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: "streetsidesoftware/cspell"
-  IMAGE_LABELS: |
-    org.opencontainers.image.title=cspell
-    org.opencontainers.image.description=CSpell command line spell checker
-    org.opencontainers.image.url=https://github.com/streetsidesoftware/cspell-cli
-    org.opencontainers.image.source=https://github.com/streetsidesoftware/cspell-cli
-    org.opencontainers.image.version=dev-pub-docker
-    org.opencontainers.image.created=2022-07-27T09:56:13.818Z
-    org.opencontainers.image.revision=ba818e864d0be73bc2f0577d10f0f9a27e10b4ba
-    org.opencontainers.image.licenses=MIT
 
 jobs:
   build-and-push-image:
@@ -56,6 +47,16 @@ jobs:
           TAGS: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.CSPELL_VERSION }}
+          IMAGE_LABELS: |
+            org.opencontainers.image.title=cspell
+            org.opencontainers.image.description=CSpell command line spell checker
+            org.opencontainers.image.url=https://github.com/streetsidesoftware/cspell-cli
+            org.opencontainers.image.source=https://github.com/streetsidesoftware/cspell-cli
+            org.opencontainers.image.version=dev-pub-docker
+            org.opencontainers.image.created=2022-07-27T09:56:13.818Z
+            org.opencontainers.image.revision=ba818e864d0be73bc2f0577d10f0f9a27e10b4ba
+            org.opencontainers.image.licenses=MIT
+          MEGA2: ${{ steps.meta2.outputs }}
 
         run: |
           export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
@@ -83,3 +84,5 @@ jobs:
       #     push: true
       #     tags: ${{ steps.meta.outputs.tags }}
       #     labels: ${{ steps.meta.outputs.labels }}
+
+# cspell:ignore opencontainers
