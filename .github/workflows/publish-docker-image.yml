@@ -57,7 +57,7 @@ jobs:
             org.opencontainers.image.revision=ba818e864d0be73bc2f0577d10f0f9a27e10b4ba
             org.opencontainers.image.licenses=MIT
           META2: |
-            ${{ fromJSON(steps.meta2.outputs.json).labels."org.opencontainers.image.created" }}
+            ${{ fromJSON(steps.meta2.outputs.json).labels.['org.opencontainers.image.created'] }}
 
         run: |
           export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
