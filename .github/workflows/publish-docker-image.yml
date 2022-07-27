@@ -50,16 +50,14 @@ jobs:
           IMAGE_LABELS: |
             org.opencontainers.image.title=cspell
             org.opencontainers.image.description=CSpell command line spell checker
-            org.opencontainers.image.url=https://github.com/streetsidesoftware/cspell-cli
-            org.opencontainers.image.source=https://github.com/streetsidesoftware/cspell-cli
+            org.opencontainers.image.url=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.url'] }}
+            org.opencontainers.image.source=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.source'] }}
             org.opencontainers.image.version=${{ env.CSPELL_VERSION }}
             org.opencontainers.image.created=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.created'] }}
             org.opencontainers.image.revision=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.revision'] }}
             org.opencontainers.image.licenses=${{ fromJSON(steps.meta2.outputs.json).labels['org.opencontainers.image.licenses'] }}
 
         run: |
-          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
-          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
           echo 'DOCKER_TAGS<<TAGS'"
           $TAGS
           TAGS" >> $GITHUB_ENV
@@ -67,22 +65,17 @@ jobs:
           $IMAGE_LABELS
           LABELS" >> $GITHUB_ENV
 
-      - name: Meta Data
-        env:
-          META2: ${{ toJSON(steps.meta2.outputs) }}
-          ENV: ${{ toJSON(env) }}
+      - name: Echo Meta Data
         run: |
-          echo "$META2"
           echo tags = "$DOCKER_TAGS"
           echo labels = "$DOCKER_LABELS"
-          echo "$ENV"
 
       # - name: Build and push Docker image
       #   uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       #   with:
       #     context: .
       #     push: true
-      #     tags: ${{ steps.meta.outputs.tags }}
-      #     labels: ${{ steps.meta.outputs.labels }}
+      #     tags: ${{ env.DOCKER_TAGS }}
+      #     labels: ${{ env.DOCKER_LABELS }}
 
 # cspell:ignore opencontainers
