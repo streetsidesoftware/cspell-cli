@@ -6,6 +6,15 @@ name: Publish Docker Images
 
 on:
   workflow_dispatch:
+    inputs:
+      dryRun:
+        description: "Dry Run?"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+        default: "no"
+        required: false
   workflow_call:
 
 env:
@@ -19,6 +28,9 @@ jobs:
     permissions:
       contents: read
       packages: write
+
+    env:
+      DEBUG: ${{ github.event.inputs.dryRun == 'yes'}}
 
     steps:
       - name: Checkout repository
