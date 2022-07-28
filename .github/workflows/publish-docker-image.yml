@@ -41,6 +41,11 @@ jobs:
         uses: docker/metadata-action@69f6fc9d46f2f8bf0d5491e4aabe0bb8c6a4678a
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ env.CSPELL_VERSION }}
+          labels: |
+            org.opencontainers.image.title=cspell
+            org.opencontainers.image.description=CSpell command line spell checker
 
       - name: Log Docker metadata
         env:
@@ -81,13 +86,12 @@ jobs:
           echo labels = "$DOCKER_LABELS"
           echo debug = "$DEBUG"
 
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@1cb9d22b932e4832bb29793b7777ec860fc1cde0
-      #   if: ${{ env.DEBUG !== 'true' }}
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ${{ env.DOCKER_TAGS }}
-      #     labels: ${{ env.DOCKER_LABELS }}
-
+      - name: Build and push Docker image
+        uses: docker/build-push-action@1cb9d22b932e4832bb29793b7777ec860fc1cde0
+        if: ${{ env.DEBUG !== 'true' }}
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 # cspell:ignore opencontainers
