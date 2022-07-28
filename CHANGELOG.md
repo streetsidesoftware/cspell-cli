@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.4](https://github.com/streetsidesoftware/cspell-cli/compare/v6.3.3...v6.3.4) (2022-07-28)
+
+
+### Bug Fixes
+
+* Update README to include Docker ([#189](https://github.com/streetsidesoftware/cspell-cli/issues/189)) ([22cb783](https://github.com/streetsidesoftware/cspell-cli/commit/22cb78312b9801adf3d28191c604398ec01fba50))
+
 ## [6.3.3](https://github.com/streetsidesoftware/cspell-cli/compare/v6.3.2...v6.3.3) (2022-07-27)
 
 
