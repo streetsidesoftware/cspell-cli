@@ -62,7 +62,7 @@ docker run -v $PWD:/workdir ghcr.io/streetsidesoftware/cspell:latest "**"
 ## Usage
 
 ```
-Usage: cspell lint [options] [globs...]
+Usage: cspell-cli lint [options] [globs...]
 
 Check spelling
 
