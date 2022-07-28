@@ -45,46 +45,13 @@ jobs:
             type=semver,pattern={{version}},value=${{ env.CSPELL_VERSION }}
           labels: |
             org.opencontainers.image.title=cspell
-            org.opencontainers.image.description=CSpell command line spell checker
+            org.opencontainers.image.description=CSpell command line spell checker for code and other documents.
+            org.opencontainers.image.vendor=Street Side Software
 
       - name: Log Docker metadata
         env:
           META: $${{ toJSON(steps.meta.outputs) }}
         run: echo "$META"
-
-      # Setup custom tags and labels
-      # - reuse meta data from docker/metadata-action where possible
-      # - This contains is published as `streetsidesoftware/cspell` instead of `cspell-cli`
-      # - The version matches `cspell` and NOT `cspell-cli`.
-      - name: Calc metadata
-        id: alt_meta
-        env:
-          TAGS: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.CSPELL_VERSION }}
-          IMAGE_LABELS: |
-            org.opencontainers.image.title=cspell
-            org.opencontainers.image.description=CSpell command line spell checker
-            org.opencontainers.image.url=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.url'] }}
-            org.opencontainers.image.source=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.source'] }}
-            org.opencontainers.image.version=${{ env.CSPELL_VERSION }}
-            org.opencontainers.image.created=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
-            org.opencontainers.image.revision=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
-            org.opencontainers.image.licenses=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.licenses'] }}
-
-        run: |
-          echo 'DOCKER_TAGS<<TAGS'"
-          $TAGS
-          TAGS" >> $GITHUB_ENV
-          echo 'DOCKER_LABELS<<LABELS'"
-          $IMAGE_LABELS
-          LABELS" >> $GITHUB_ENV
-
-      - name: Echo Meta Data
-        run: |
-          echo tags = "$DOCKER_TAGS"
-          echo labels = "$DOCKER_LABELS"
-          echo debug = "$DEBUG"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@1cb9d22b932e4832bb29793b7777ec860fc1cde0
