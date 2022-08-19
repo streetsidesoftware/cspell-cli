@@ -13,7 +13,16 @@ repos:
       - id: cspell
 ```
 
-## Setup Custom Dictionary
+## Using additional dictionaries
+
+### Using included dictionaries on non-standard files
+
+For example, using Bash dictionary with Markdown or text files, by filename (the
+default is to only apply from within VSCode for files of type `shellscript`).
+
+[Using CSpell overrides](docs/README-OVERRIDES.md)
+
+### Setup Custom Dictionary
 
 To use a custom dictionary with the `pre-commit` hook, create either a `cspell.config.yaml` or `cspell.json` file in your project's root directory.
 
