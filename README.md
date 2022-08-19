@@ -22,6 +22,16 @@ default is to only apply from within VSCode for files of type `shellscript`).
 
 [Using CSpell overrides](docs/README-OVERRIDES.md)
 
+### Using dictionaries from `cspell-dicts`
+
+For example, using the fr_FR and fr_FR_90 dictionaries when local is `fr`
+
+[Using extra CSpell dictionaries with
+`pre-commit`](docs/README-PRE-COMMIT-EXTRA-DICTS.md)
+
+You can of course combine using override with using dictionaries from
+`cspell-dicts`.
+
 ### Setup Custom Dictionary
 
 To use a custom dictionary with the `pre-commit` hook, create either a `cspell.config.yaml` or `cspell.json` file in your project's root directory.
