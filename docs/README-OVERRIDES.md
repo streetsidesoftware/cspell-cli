@@ -29,29 +29,31 @@ Given a `cspell.json` as follows:
 
 And the following, as `test1.md` and as `test1.err`:
 
-``` markdown
+```` markdown
 ## Sample code block
 
-    if grep -r "something" .; then
-        echo "Found"
-    fi
+```sh
+if grep -r "something" .; then
+    echo "Found"
+fi
 
-    case "a string with 3" in
-    with)
-        echo "Why?"
-        ;;
-    esac
+case "a string with 3" in
+with)
+    echo "Why?"
+    ;;
+esac
 
-    . ./.bash_aliases
+. ./.bash_aliases
 
-    # We should use getopts
+# We should use getopts
 
-    shopt -p
+shopt -p
+```
 
 ## And another topic
 
 Words, many words.
-```
+````
 
 When `cspell` is invoked `test1.md` should not show errors, but `test1.err`
 should.
