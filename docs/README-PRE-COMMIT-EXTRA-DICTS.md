@@ -1,4 +1,5 @@
 # Using extra CSpell dictionaries with `pre-commit`
+<!--- cspell:ignore Voici nous avons française reforme --->
 
 ## Common configuration
 

@@ -1,4 +1,5 @@
 # Using CSpell overrides
+<!--- cspell:ignore esac getopts shopt --->
 
 This is the same for use with `pre-commit` as with other methods of invoking
 `cspell`, namely configuring an `overrides` section on your `cspell.json`
