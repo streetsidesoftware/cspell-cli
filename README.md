@@ -13,24 +13,11 @@ repos:
       - id: cspell
 ```
 
-## Using additional dictionaries
+## How-To Guides and Configuration Examples
 
-### Using included dictionaries on non-standard files
-
-For example, using Bash dictionary with Markdown or text files, by filename (the
-default is to only apply from within VSCode for files of type `shellscript`).
-
-[Using CSpell overrides](docs/README-OVERRIDES.md)
-
-### Using dictionaries from `cspell-dicts`
-
-For example, using the fr_FR and fr_FR_90 dictionaries when local is `fr`
-
-[Using extra CSpell dictionaries with
-`pre-commit`](docs/README-PRE-COMMIT-EXTRA-DICTS.md)
-
-You can of course combine using override with using dictionaries from
-`cspell-dicts`.
+* [Use Dictionaries from `cspell-dicts`](docs/README-PRE-COMMIT-EXTRA-DICTS.md)
+* [Use a Different Dictionary Based Upon the Filename](docs/README-OVERRIDES.md)
+* [Example `pre-commit` Setup for French](docs/README-PRE-COMMIT-EXAMPLE-FOR-FRENCH.md)
 
 ### Setup Custom Dictionary
 
