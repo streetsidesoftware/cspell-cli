@@ -16,7 +16,7 @@ repos:
 ## How-To Guides and Configuration Examples
 
 * [Use Dictionaries from `cspell-dicts`](docs/README-PRE-COMMIT-EXTRA-DICTS.md)
-* [Use a Different Dictionary Based Upon the Filename](docs/README-OVERRIDES.md)
+* [Use a Different Dictionary Based Upon the Filename](docs/README-FILE-FOLDER-BASED-OVERRIDE.md)
 * [Example `pre-commit` Setup for French](docs/README-PRE-COMMIT-EXAMPLE-FOR-FRENCH.md)
 
 ### Setup Custom Dictionary
