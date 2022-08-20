@@ -130,7 +130,7 @@ git repository cloned via `git clone`
 
   repos:
   - repo: "https://github.com/streetsidesoftware/cspell-cli"
-    rev: v6.5.0
+    rev: v6.7.0
     hooks:
     - id: cspell
   ```

@@ -12,7 +12,7 @@ Extend the `pre-commit` hook config from the [README.md](../README.md) with
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v6.2.0
+    rev: v6.7.0
     hooks:
       - id: cspell
         additional_dependencies:
