@@ -20,6 +20,7 @@ specific folders.
 
 Given a `cspell.json` as follows:
 
+
 ``` json
 {
   "overrides": [
@@ -165,4 +166,3 @@ git repository cloned via `git clone`
   ``` bash
   cspell '**'
   ```
-
