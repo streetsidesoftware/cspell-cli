@@ -143,13 +143,13 @@ git repository cloned via `git clone`
   git add --all .
   ```
 
-* Execute:
+* Check all files in `git` against `pre-commit` hooks
 
   ``` bash
   pre-commit run --all-files
   ```
 
-  OR commit the changes
+* OR commit the changes
 
   ``` bash
   git commit
