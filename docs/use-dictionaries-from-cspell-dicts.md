@@ -1,7 +1,39 @@
 # Using extra CSpell dictionaries with `pre-commit`
-<!--- cspell:ignore Voici nous avons française reforme --->
 
-## Common configuration
+## Using dictionaries from `cspell-dicts`
+
+This is mostly (only?) needed for language dictionaries. Most if not all other
+dictionaries are installed (but not active except in particular contexts) by
+default. For those dictionaries see [Using file or folder based
+overrides](file-or-folder-based-overrides.md)
+
+### More information on `cspell-dicts`
+
+For a complete list of available dictionaries,
+see: <https://github.com/streetsidesoftware/cspell-dicts>.
+
+To see when the dictionary is applied by default, view
+
+`https://github.com/streetsidesoftware/cspell-dicts/dictionaries/<dictionary-name>/cspell-ext.json`
+
+### Viewing a dictionary's default context in `cspell-dicts`
+
+View the file
+`https://github.com/streetsidesoftware/cspell-dicts/blob/main/dictionaries/<dictionary-name>/cspell-ext.json`
+
+For example: `https://github.com/streetsidesoftware/cspell-dicts/blob/main/dictionaries/public-licenses/cspell-ext.json`
+
+``` json
+// Turn on the dictionary by default.
+// It can be turned off using `"dictionaries": ["!public-licenses"]
+"dictionaries": ["public-licenses"],
+"languageSettings": []
+```
+
+## Using non-English language dictionaries
+
+For a non-English language dictionary, continue here, or the see the
+[`pre-commit` example setup for French](pre-commit-example-setup-for-french.md).
 
 ### `pre-commit-config.yaml` configuration
 
@@ -11,20 +43,15 @@ Extend the `pre-commit` hook config from the [README.md](../README.md) with
 ```yaml
 # .pre-commit-config.yaml
 repos:
-  - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v6.7.0
-    hooks:
-      - id: cspell
-        additional_dependencies:
-          - "@cspell/dict-fr-fr"
-          - "@cspell/dict-fr-reforme"
-
+- repo: https://github.com/streetsidesoftware/cspell-cli
+  rev: v6.7.0
+  hooks:
+  - id: cspell
+    additional_dependencies:
+    - "@cspell/dict-nl-nl"
 ```
 
-For a complete list of available dictionaries,
-see: <https://github.com/streetsidesoftware/cspell-dicts>.
-
-## Using French as the locale
+### To make the 'nl-nl' dictionary available
 
 Use a `cspell.json` such as the following:
 
@@ -32,60 +59,26 @@ Use a `cspell.json` such as the following:
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "import": [
-    "@cspell/dict-fr-fr/cspell-ext.json",
-    "@cspell/dict-fr-reforme/cspell-ext.json"
+    "@cspell/dict-nl-nl/cspell-ext.json"
   ],
-  "language": "fr",
   "version": "0.2"
 }
 ```
 
-A file such as `test2.md` containing:
+### To make 'nl-nl' the default locale and use `dict-nl-nl`:
 
-```markdown
-# Testing french in Markdown
-
-## Les mots
-
-Voici, nous avons les mots française.
-```
-
-When `cspell` is invoked `test2.md` should not show errors
-
-## Applying to specific files
-
-And to apply those dictionaries to files with the `.md` extension (Markdown),
-use a `cspell.json` such as:
+Use a `cspell.json` such as the following:
 
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "import": [
-    "@cspell/dict-fr-fr/cspell-ext.json",
-    "@cspell/dict-fr-reforme/cspell-ext.json"
+    "@cspell/dict-nl-nl/cspell-ext.json"
   ],
-  "overrides": [
-    {
-      "filename": "**/{*.md,*.txt}",
-      "language": "fr,fr-fr,fr-90"
-    }
-  ],
+  "language": "nl-nl",
   "version": "0.2"
 }
 ```
-
-And the following, as `test2.md` and as `test2.err`:
-
-``` markdown
-# Testing french in Markdown
-
-## Les mots
-
-Voici, nous avons les mots française
-```
-
-When `cspell` is invoked `test2.md` should not show errors, but `test2.err`
-should.
 
 ## Invoking CSpell
 
@@ -109,4 +102,4 @@ With [pre-commit](https://pre-commit.com) installed:
 
 ### Command line
 
-`cspell ./test2.*`
+`cspell '**'`
