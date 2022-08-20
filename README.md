@@ -16,40 +16,9 @@ repos:
 ## How-To Guides and Configuration Examples
 
 * [Use Dictionaries from `cspell-dicts`](docs/use-dictionaries-from-cspell-dicts.md)
+* [Use a Custom Dictionary](docs/use-a-custom-dictionary.md)
 * [Use a Different Dictionary Based Upon the Filename](docs/file-or-folder-based-overrides.md)
 * [Example `pre-commit` Setup for French](docs/pre-commit-example-setup-for-french.md)
-
-### Setup Custom Dictionary
-
-To use a custom dictionary with the `pre-commit` hook, create either a `cspell.config.yaml` or `cspell.json` file in your project's root directory.
-
-`cspell.config.yaml`
-
-```yaml
-dictionaryDefinitions:
-  - name: myWords
-    path: ./path/to/cSpell_dict.txt
-    addWords: true
-dictionaries:
-  - myWords
-```
-
-`cSpell.json`
-
-```json
-{
-  "dictionaryDefinitions": [
-    {
-      "name": "myWords",
-      "path": "./path/to/cSpell_dict.txt",
-      "addWords": true
-    }
-  ],
-  "dictionaries": ["myWords"]
-}
-```
-
-If you installed the [Code Spell Checker extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) for VS Code, this can be done automatically from the command palette by running "Spell: Create a CSpell configuration file".
 
 ## Install from GitHub
 
