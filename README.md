@@ -17,7 +17,7 @@ repos:
 
 * [Use Dictionaries from `cspell-dicts`](docs/use-dictionaries-from-cspell-dicts.md)
 * [Use a Custom Dictionary](docs/use-a-custom-dictionary.md)
-* [Use a Different Dictionary Based Upon the Filename](docs/file-or-folder-based-overrides.md)
+* [Use an Extra Dictionary Based on the Folder or Filename](docs/file-or-folder-based-overrides.md)
 * [Example `pre-commit` Setup for French](docs/pre-commit-example-setup-for-french.md)
 
 ## Install from GitHub

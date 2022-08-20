@@ -1,8 +1,11 @@
-# Using Different Dictionaries Based on Filename
+# Use an Extra Dictionary Based on the Folder or Filename
 <!--- cspell:ignore esac getopts shopt --->
 
 For example, using Bash dictionary with Markdown or text files, by filename (the
 default is to only apply from within VSCode for files of type `shellscript`).
+
+**Note**: This adds the Bash dictionary to the list of dictionaries against
+which to check the files, it does not check only against the Bash dictionary.
 
 This is the same for use with `pre-commit` as with other methods of invoking
 `cspell`, namely configuring an `overrides` section on your `cspell.json`
