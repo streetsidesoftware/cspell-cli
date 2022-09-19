@@ -37,12 +37,9 @@ jobs:
       - name: CSpell Version
         run: echo CSPELL_VERSION=$(npx cspell -V) >> $GITHUB_ENV
       - name: Minor Versions
-        env:
-          OLD: ${{ env.CSPELL_VERSION_OLD }}
-          NEW: ${{ env.CSPELL_VERSION }}
         run: |
-          echo CSPELL_MINOR_OLD=$(echo '"$OLD"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
-          echo CSPELL_MINOR_NEW=$(echo '"$NEW"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_OLD=$(echo '"${{ env.CSPELL_VERSION_OLD }}"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_NEW=$(echo '"${{ env.CSPELL_VERSION }}"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
       - name: Determine Update type
         env:
           type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && 'fix') || 'feat' }}
