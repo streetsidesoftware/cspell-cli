@@ -26,12 +26,25 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ env.REF_BRANCH }}
-      - name: Update CSpell to latest
+      - name: Install
         run: |
           npm i
+      - name: CSpell Old Version
+        run: echo CSPELL_VERSION_OLD=$(npx cspell -V) >> $GITHUB_ENV
+      - name: Update CSpell to latest
+        run: |
           npm i cspell@latest
       - name: CSpell Version
-        run: echo "CSPELL_VERSION=$(npx cspell -V)" >> $GITHUB_ENV
+        run: echo CSPELL_VERSION=$(npx cspell -V) >> $GITHUB_ENV
+      - name: Minor Versions
+        run: |
+          echo CSPELL_MINOR_OLD=$(echo '"$CSPELL_VERSION_OLD"' | jq jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_NEW=$(echo '"$CSPELL_VERSION"' | jq jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+      - name: Determine Update type
+        env:
+          type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && "fix") || "feat" }}
+        run: |
+          echo PR_TYPE=$type >> $GITHUB_ENV
       - name: Install
         run: npm install
       - name: Has changes
