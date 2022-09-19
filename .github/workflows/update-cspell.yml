@@ -42,7 +42,7 @@ jobs:
           echo CSPELL_MINOR_NEW=$(echo '"$CSPELL_VERSION"' | jq jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
       - name: Determine Update type
         env:
-          type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && "fix") || "feat" }}
+          type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && 'fix') || 'feat' }}
         run: |
           echo PR_TYPE=$type >> $GITHUB_ENV
       - name: Install
