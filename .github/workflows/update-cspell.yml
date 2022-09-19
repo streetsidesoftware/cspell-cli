@@ -37,9 +37,12 @@ jobs:
       - name: CSpell Version
         run: echo CSPELL_VERSION=$(npx cspell -V) >> $GITHUB_ENV
       - name: Minor Versions
+        env:
+          OLD: ${{ env.CSPELL_VERSION_OLD }}
+          NEW: ${{ env.CSPELL_VERSION }}
         run: |
-          echo CSPELL_MINOR_OLD=$(echo '"$CSPELL_VERSION_OLD"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
-          echo CSPELL_MINOR_NEW=$(echo '"$CSPELL_VERSION"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_OLD=$(echo '"$OLD"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_NEW=$(echo '"$NEW"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
       - name: Determine Update type
         env:
           type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && 'fix') || 'feat' }}
@@ -80,10 +83,10 @@ jobs:
         if: env.git_status == 'dirty'
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "fix: Update CSpell to ${{ env.CSPELL_VERSION }}"
+          commit-message: "${{ env.PR_TYPE }}: Update CSpell to ${{ env.CSPELL_VERSION }}"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "fix: Workflow Bot -- Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
+          title: "${{ env.PR_TYPE }}: Workflow Bot -- Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
           token: ${{ steps.generate-token.outputs.token }}
           body: ${{ env.git_body }}
           delete-branch: true
