@@ -26,12 +26,25 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ env.REF_BRANCH }}
-      - name: Update CSpell to latest
+      - name: Install
         run: |
           npm i
+      - name: CSpell Old Version
+        run: echo CSPELL_VERSION_OLD=$(npx cspell -V) >> $GITHUB_ENV
+      - name: Update CSpell to latest
+        run: |
           npm i cspell@latest
       - name: CSpell Version
-        run: echo "CSPELL_VERSION=$(npx cspell -V)" >> $GITHUB_ENV
+        run: echo CSPELL_VERSION=$(npx cspell -V) >> $GITHUB_ENV
+      - name: Minor Versions
+        run: |
+          echo CSPELL_MINOR_OLD=$(echo '"${{ env.CSPELL_VERSION_OLD }}"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+          echo CSPELL_MINOR_NEW=$(echo '"${{ env.CSPELL_VERSION }}"' | jq 'sub("\\.[0-9]+$";"")') >> $GITHUB_ENV
+      - name: Determine Update type
+        env:
+          type: ${{ (env.CSPELL_MINOR_OLD == env.CSPELL_MINOR_NEW && 'fix') || 'feat' }}
+        run: |
+          echo PR_TYPE=$type >> $GITHUB_ENV
       - name: Install
         run: npm install
       - name: Has changes
@@ -67,10 +80,10 @@ jobs:
         if: env.git_status == 'dirty'
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "fix: Update CSpell to ${{ env.CSPELL_VERSION }}"
+          commit-message: "${{ env.PR_TYPE }}: Update CSpell to ${{ env.CSPELL_VERSION }}"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "fix: Workflow Bot -- Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
+          title: "${{ env.PR_TYPE }}: Workflow Bot -- Update CSpell to (${{ env.CSPELL_VERSION }}) (${{ env.REF_BRANCH }})"
           token: ${{ steps.generate-token.outputs.token }}
           body: ${{ env.git_body }}
           delete-branch: true
