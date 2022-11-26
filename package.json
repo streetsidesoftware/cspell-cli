@@ -34,6 +34,6 @@
     "node": ">=14"
   },
   "dependencies": {
-    "cspell": "^6.14.3"
+    "cspell": "^6.15.0"
   }
 }
