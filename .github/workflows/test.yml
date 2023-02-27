@@ -31,7 +31,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm -v
-      - run: npm ci
+      - run: npm ci --omit=dev
       - run: npm test
 
       # Ensure the repository is clean after build & test
@@ -58,7 +58,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm ci
+      - run: npm ci --omit=dev
       - run: npm test
 
       # Ensure the repository is clean after build & test
