@@ -1,0 +1,19 @@
+name: setup_node
+description: Setup Node, and install Npm
+inputs:
+  node-version:
+    required: false
+    description: The version of Node to use.
+    default: "18.x"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup NPM
+      run: npm i -g npm@8
+      shell: bash
+    - name: Use Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        registry-url: "https://registry.npmjs.org"
+        node-version: ${{ inputs.node-version }}
+        cache: "npm"
