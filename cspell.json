@@ -1,17 +1,11 @@
 {
-    "files": [
-        "**",
-        ".*/**"
-    ],
-    "ignorePaths": [
-        ".git",
-        ".gitignore",
-        "node_modules",
-        "package-lock.json"
-    ],
-    "words": [
-        "codeql",
-        "streetsidesoftware",
-        "workdir"
-    ]
+  "files": ["**", ".*/**"],
+  "ignorePaths": [
+    ".git",
+    ".gitignore",
+    "CHANGELOG.md",
+    "node_modules",
+    "package-lock.json"
+  ],
+  "words": ["codeql", "streetsidesoftware", "workdir"]
 }

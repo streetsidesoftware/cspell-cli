@@ -39,6 +39,11 @@ jobs:
           rm -rf node_modules package-lock.json
       - name: Install
         run: npm install
+
+      - name: Lint Fix
+        run: |
+          npm run lint:fix
+
       - name: Has changes
         run: |
           git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV

@@ -1,7 +1,7 @@
 {
   "name": "cspell-cli",
   "version": "6.26.0",
-  "description": "CLI for cspell: A Spelling Checker for Code!",
+  "description": "CLI for cspell; A Spelling Checker for Code!",
   "main": "index.js",
   "bin": {
     "cspell-cli": "index.js"
@@ -11,7 +11,10 @@
     "version-release-minor": "npx standard-version -r minor",
     "version-release-patch": "npx standard-version -r patch",
     "version-release": "npx standard-version",
-    "test": "node ./index.js \"**\""
+    "lint:fix": "prettier -w .",
+    "build:readme": "npm run build:help && inject-markdown README.md",
+    "build:help": "node index.js lint --help > static/lint-help.txt",
+    "test": "node ./index.js ."
   },
   "repository": {
     "type": "git",
@@ -35,5 +38,9 @@
   },
   "dependencies": {
     "cspell": "^6.27.0"
+  },
+  "devDependencies": {
+    "inject-markdown": "^1.5.0",
+    "prettier": "^2.8.4"
   }
 }
