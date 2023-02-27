@@ -8,7 +8,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Setup NPM
+    - name: Prep NPM
       run: npm i -g npm@8
       shell: bash
     - name: Use Node.js ${{ inputs.node-version }}
@@ -17,3 +17,9 @@ runs:
         registry-url: "https://registry.npmjs.org"
         node-version: ${{ inputs.node-version }}
         cache: "npm"
+    - name: Setup NPM
+      run: npm i -g npm@8
+      shell: bash
+    - name: NPM Version
+      run: npm -v;
+      shell: bash
