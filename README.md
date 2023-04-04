@@ -4,14 +4,18 @@
 
 This repository enables using [cspell](https://github.com/streetsidesoftware/cspell) as a [pre-commit](https://pre-commit.com) hook.
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v6.2.0
+    rev: v6.31.0
     hooks:
       - id: cspell
 ```
+
+<!-- x-release-please-end -->
 
 ## Setup Custom Dictionary
 
