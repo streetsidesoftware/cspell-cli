@@ -10,7 +10,10 @@
       "bumpMinorPreMajor": false,
       "bumpPatchForMinorPreMajor": false,
       "changelogPath": "CHANGELOG.md",
-      "versioning": "default"
+      "versioning": "default",
+      "extra-files": [
+        "README.md"
+      ]
     }
   }
 }
