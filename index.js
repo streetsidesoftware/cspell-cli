@@ -1,5 +1,3 @@
 #!/usr/bin/env node
 
-"use strict";
-
-require("cspell/bin");
+import "cspell/bin";

@@ -2,7 +2,8 @@
   "name": "cspell-cli",
   "version": "6.31.2",
   "description": "CLI for cspell; A Spelling Checker for Code!",
-  "main": "index.js",
+  "type": "module",
+  "module": "index.js",
   "bin": {
     "cspell-cli": "index.js"
   },
@@ -34,10 +35,10 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "dependencies": {
-    "cspell": "^6.31.3"
+    "cspell": "^7.0.0"
   },
   "devDependencies": {
     "inject-markdown": "^2.0.0",
