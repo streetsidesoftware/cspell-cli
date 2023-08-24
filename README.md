@@ -10,7 +10,7 @@ This repository enables using [cspell](https://github.com/streetsidesoftware/csp
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v7.0.0
+    rev: v7.0.1
     hooks:
       - id: cspell
 ```
