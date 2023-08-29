@@ -1,6 +1,6 @@
 {
   "name": "cspell-cli",
-  "version": "7.0.1",
+  "version": "7.1.0",
   "description": "CLI for cspell; A Spelling Checker for Code!",
   "type": "module",
   "module": "index.js",
