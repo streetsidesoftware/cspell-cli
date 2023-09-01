@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://github.com/streetsidesoftware/cspell-cli/compare/v7.2.0...v7.3.0) (2023-09-01)
+
+
+### Features
+
+* Workflow Bot -- Update CSpell to (7.3.0) (main) ([#371](https://github.com/streetsidesoftware/cspell-cli/issues/371)) ([93a0294](https://github.com/streetsidesoftware/cspell-cli/commit/93a02947b57b16bf07a5ef7c0056417ad7d66ed6))
+
+
+### Bug Fixes
+
+* Workflow Bot -- Update CSpell to (7.3.2) (main) ([#372](https://github.com/streetsidesoftware/cspell-cli/issues/372)) ([710835b](https://github.com/streetsidesoftware/cspell-cli/commit/710835b484a82f06adabea9fe03abbbe4b298283))
+
 ## [7.2.0](https://github.com/streetsidesoftware/cspell-cli/compare/v7.1.0...v7.2.0) (2023-08-29)
 
 
