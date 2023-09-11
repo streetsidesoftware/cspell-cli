@@ -15,6 +15,7 @@ jobs:
         id: release
         with:
           command: manifest
+          release-type: node
 
   # cspell:ignore noreply
 
