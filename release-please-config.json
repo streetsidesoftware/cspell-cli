@@ -62,9 +62,7 @@
   "packages": {
     ".": {
       "releaseType": "node",
-      "extra-files": [
-        "README.md"
-      ]
+      "extra-files": ["README.md"]
     }
   }
 }
