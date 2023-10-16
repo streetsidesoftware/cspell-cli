@@ -1,0 +1,16 @@
+Usage: cspell check [options] <files...>
+
+Spell check file(s) and display the result. The full file is displayed in
+color.
+
+Options:
+  -c, --config <cspell.json>  Configuration file to use.  By default cspell
+                              looks for cspell.json in the current directory.
+  --validate-directives       Validate in-document CSpell directives.
+  --no-validate-directives    Do not validate in-document CSpell directives.
+  --no-color                  Turn off color.
+  --color                     Force color
+  --no-exit-code              Do not return an exit code if issues are found.
+  --no-default-configuration  Do not load the default configuration and
+                              dictionaries.
+  -h, --help                  display help for command

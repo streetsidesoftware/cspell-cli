@@ -1,0 +1,19 @@
+Usage: cspell [options] [command]
+
+Spelling Checker for Code
+
+Options:
+  -V, --version                         output the version number
+  -h, --help                            display help for command
+
+Commands:
+  lint [options] [globs...]             Check spelling
+  trace [options] [words...]            Trace words -- Search for words in the
+                                        configuration and dictionaries.
+  check [options] <files...>            Spell check file(s) and display the
+                                        result. The full file is displayed in
+                                        color.
+  suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  link                                  Link dictionaries and other settings to
+                                        the cspell global config.
+  help [command]                        display help for command

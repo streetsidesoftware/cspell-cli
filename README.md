@@ -67,7 +67,37 @@ docker run -v $PWD:/workdir ghcr.io/streetsidesoftware/cspell:latest "**"
 
 ## Usage
 
-<!--- @@inject: static/lint-help.txt --->
+`cspell --help`:
+
+<!--- @@inject: static/help.txt --->
+
+```
+Usage: cspell [options] [command]
+
+Spelling Checker for Code
+
+Options:
+  -V, --version                         output the version number
+  -h, --help                            display help for command
+
+Commands:
+  lint [options] [globs...]             Check spelling
+  trace [options] [words...]            Trace words -- Search for words in the
+                                        configuration and dictionaries.
+  check [options] <files...>            Spell check file(s) and display the
+                                        result. The full file is displayed in
+                                        color.
+  suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  link                                  Link dictionaries and other settings to
+                                        the cspell global config.
+  help [command]                        display help for command
+```
+
+<!--- @@inject-end: static/help.txt --->
+
+`cspell lint --help`:
+
+<!--- @@inject: static/help-lint.txt --->
 
 ```
 Usage: cspell lint [options] [globs...] [file://<path> ...] [stdin[://<path>]]
@@ -167,10 +197,135 @@ References:
     https://github.com/streetsidesoftware/cspell
 ```
 
-<!--- @@inject-end: static/lint-help.txt --->
+<!--- @@inject-end: static/help-lint.txt --->
+
+`cspell trace --help`:
+
+<!--- @@inject: static/help-trace.txt --->
+
+```
+Usage: cspell trace [options] [words...]
+
+Trace words -- Search for words in the configuration and dictionaries.
+
+Options:
+  -c, --config <cspell.json>  Configuration file to use.  By default cspell
+                              looks for cspell.json in the current directory.
+  --locale <locale>           Set language locales. i.e. "en,fr" for English
+                              and French, or "en-GB" for British English.
+  --language-id <language>    Use programming language. i.e. "php" or "scala".
+  --allow-compound-words      Turn on allowCompoundWords
+  --no-allow-compound-words   Turn off allowCompoundWords
+  --ignore-case               Ignore case and accents when searching for words.
+  --no-ignore-case            Do not ignore case and accents when searching for
+                              words.
+  --dictionary-path <format>  Configure how to display the dictionary path.
+                              (choices: "hide", "short", "long", "full",
+                              default: Display most of the path.)
+  --stdin                     Read words from stdin.
+  --all                       Show all dictionaries.
+  --only-found                Show only dictionaries that have the words.
+  --no-color                  Turn off color.
+  --color                     Force color
+  --no-default-configuration  Do not load the default configuration and
+                              dictionaries.
+  -h, --help                  display help for command
+```
+
+<!--- @@inject-end: static/help-trace.txt --->
+
+`cspell check --help`:
+
+<!--- @@inject: static/help-check.txt --->
+
+```
+Usage: cspell check [options] <files...>
+
+Spell check file(s) and display the result. The full file is displayed in
+color.
+
+Options:
+  -c, --config <cspell.json>  Configuration file to use.  By default cspell
+                              looks for cspell.json in the current directory.
+  --validate-directives       Validate in-document CSpell directives.
+  --no-validate-directives    Do not validate in-document CSpell directives.
+  --no-color                  Turn off color.
+  --color                     Force color
+  --no-exit-code              Do not return an exit code if issues are found.
+  --no-default-configuration  Do not load the default configuration and
+                              dictionaries.
+  -h, --help                  display help for command
+```
+
+<!--- @@inject-end: static/help-check.txt --->
+
+`cspell suggestions --help`:
+
+<!--- @@inject: static/help-suggestions.txt --->
+
+```
+Usage: cspell suggestions|sug [options] [words...]
+
+Spelling Suggestions for words.
+
+Options:
+  -c, --config <cspell.json>            Configuration file to use.  By default
+                                        cspell looks for cspell.json in the
+                                        current directory.
+  --locale <locale>                     Set language locales. i.e. "en,fr" for
+                                        English and French, or "en-GB" for
+                                        British English.
+  --language-id <language>              Use programming language. i.e. "php" or
+                                        "scala".
+  -s, --no-strict                       Ignore case and accents when searching
+                                        for words.
+  --ignore-case                         Alias of --no-strict.
+  --num-changes <number>                Number of changes allowed to a word
+                                        (default: 4)
+  --num-suggestions <number>            Number of suggestions (default: 8)
+  --no-include-ties                     Force the number of suggested to be
+                                        limited, by not including suggestions
+                                        that have the same edit cost.
+  --stdin                               Use stdin for input.
+  --repl                                REPL interface for looking up
+                                        suggestions.
+  -v, --verbose                         Show detailed output.
+  -d, --dictionary <dictionary name>    Use the dictionary specified. Only
+                                        dictionaries specified will be used.
+  --dictionaries <dictionary names...>  Use the dictionaries specified. Only
+                                        dictionaries specified will be used.
+  --no-color                            Turn off color.
+  --color                               Force color
+  -h, --help                            display help for command
+```
+
+<!--- @@inject-end: static/help-suggestions.txt --->
+
+`cspell link --help`:
+
+<!--- @@inject: static/help-link.txt --->
+
+```
+Usage: cspell link [options] [command]
+
+Link dictionaries and other settings to the cspell global config.
+
+Options:
+  -h, --help               display help for command
+
+Commands:
+  list|ls                  List currently linked configurations.
+  add|a <dictionaries...>  Add dictionaries any other settings to the cspell
+                           global config.
+  remove|r <paths...>      Remove matching paths / packages from the global
+                           config.
+  help [command]           display help for command
+```
+
+<!--- @@inject-end: static/help-link.txt --->
 
 ## Versioning
 
 The major version of `cspell-cli` tries to match the major version of `cspell`.
 
-`minor` and `patch` versioning goes up independently from `cspell`.
+`minor` and `patch` versioning goes up independently from `cspell`. Where possible, the `minor` version should match `cspell`.
