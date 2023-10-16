@@ -1,0 +1,14 @@
+Usage: cspell link [options] [command]
+
+Link dictionaries and other settings to the cspell global config.
+
+Options:
+  -h, --help               display help for command
+
+Commands:
+  list|ls                  List currently linked configurations.
+  add|a <dictionaries...>  Add dictionaries any other settings to the cspell
+                           global config.
+  remove|r <paths...>      Remove matching paths / packages from the global
+                           config.
+  help [command]           display help for command

@@ -13,8 +13,13 @@
     "version-release-patch": "npx standard-version -r patch",
     "version-release": "npx standard-version",
     "lint:fix": "prettier -w .",
-    "build:readme": "npm run build:help && inject-markdown README.md",
-    "build:help": "node index.js lint --help > static/lint-help.txt",
+    "build:readme": "npm run build:help && npm run build:help-lint && npm run build:help-trace && npm run build:help-check && npm run build:help-suggestions && npm run build:help-link && inject-markdown README.md",
+    "build:help": "node index.js --help > static/help.txt",
+    "build:help-lint": "node index.js lint --help > static/help-lint.txt",
+    "build:help-trace": "node index.js trace --help > static/help-trace.txt",
+    "build:help-check": "node index.js check --help > static/help-check.txt",
+    "build:help-suggestions": "node index.js suggestions --help > static/help-suggestions.txt",
+    "build:help-link": "node index.js link --help > static/help-link.txt",
     "test": "node ./index.js ."
   },
   "repository": {
