@@ -95,6 +95,10 @@ Commands:
 
 <!--- @@inject-end: static/help.txt --->
 
+### Lint
+
+`lint` is the default command.
+
 `cspell lint --help`:
 
 <!--- @@inject: static/help-lint.txt --->
@@ -199,6 +203,8 @@ References:
 
 <!--- @@inject-end: static/help-lint.txt --->
 
+### Trace
+
 `cspell trace --help`:
 
 <!--- @@inject: static/help-trace.txt --->
@@ -234,6 +240,8 @@ Options:
 
 <!--- @@inject-end: static/help-trace.txt --->
 
+### Check
+
 `cspell check --help`:
 
 <!--- @@inject: static/help-check.txt --->
@@ -258,6 +266,8 @@ Options:
 ```
 
 <!--- @@inject-end: static/help-check.txt --->
+
+### Suggestions
 
 `cspell suggestions --help`:
 
@@ -300,6 +310,8 @@ Options:
 ```
 
 <!--- @@inject-end: static/help-suggestions.txt --->
+
+### Link
 
 `cspell link --help`:
 
