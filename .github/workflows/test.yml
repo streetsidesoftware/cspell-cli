@@ -14,9 +14,9 @@ jobs:
       matrix:
         node-version:
           # List of supported node versions (latest is tested in `test-os`)
-          - 16.x
           - 18.x
           - 20.x
+          - 21.x
 
         os:
           - ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       matrix:
         node-version:
           # Test the latest node version here, move older versions to `test-old-node-versions`
-          - 16.x
+          - 18.x
 
         os:
           - windows-latest

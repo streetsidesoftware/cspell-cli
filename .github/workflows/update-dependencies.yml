@@ -1,13 +1,20 @@
 name: "  🔗 Update Dependencies Main"
 
 on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: The Base Ref to apply the diff
+        required: false
+        default: "main"
+
   push:
     branches:
       - main
     paths:
       - "**/package.json"
       - "**/package-lock.json"
-  workflow_dispatch:
+
   schedule:
     - cron: "0 12 * * 0"
 
@@ -16,12 +23,15 @@ jobs:
     if: github.repository_owner == 'streetsidesoftware'
     runs-on: ubuntu-latest
     env:
-      NEW_BRANCH: "update-dependencies-main"
-      REF_BRANCH: main
+      NEW_BRANCH: update-dependencies-${{ inputs.base || 'main' }}
+      REF_BRANCH: ${{ inputs.base || 'main' }}
     steps:
       - name: Start
+        env:
+          EVENT_INPUTS: ${{ toJson(github.event.inputs) }}
         run: |
-          echo "${{ toJson(github.event.inputs) }}"
+          echo "$EVENT_INPUTS"
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -30,13 +40,14 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.x
 
       - name: Update Root
         run: |
           npm i
-          npx npm-check-updates -t minor -u
+          npx npm-check-updates -t semver -u
           rm -rf node_modules package-lock.json
+
       - name: Install
         run: npm install
 
@@ -44,41 +55,33 @@ jobs:
         run: |
           npm run lint:fix
 
-      - name: Has changes
-        run: |
-          git --no-pager diff --compact-summary  --exit-code && echo "git_status=clean" >> $GITHUB_ENV || echo "git_status=dirty" >> $GITHUB_ENV
-          git --no-pager diff --compact-summary
-      - name: Gen Body
-        run: |
-          echo "git_body<<DIFF" >> $GITHUB_ENV
-          echo "### Workflow Bot -- Update ALL Dependencies" >> $GITHUB_ENV
-          echo "" >> $GITHUB_ENV
-          echo "#### Package.json"  >> $GITHUB_ENV
-          echo "" >> $GITHUB_ENV
-          echo "\`\`\`\`\`\`diff"  >> $GITHUB_ENV
-          git --no-pager diff package.json  >> $GITHUB_ENV
-          echo "\`\`\`\`\`\`"  >> $GITHUB_ENV
-          echo "" >> $GITHUB_ENV
-          echo "#### Summary"  >> $GITHUB_ENV
-          echo "" >> $GITHUB_ENV
-          git --no-pager diff --compact-summary >> $GITHUB_ENV
-          echo "DIFF" >> $GITHUB_ENV
-      - name: Echo git_status
-        run: echo ${{ env.git_status }}
-      - uses: tibdex/github-app-token@v2.1 # cspell:ignore tibdex
-        if: env.git_status == 'dirty'
-        id: generate-token
+      - name: Git Status
+        id: git-status
+        uses: streetsidesoftware/actions/public/dirty@v1
+
+      - name: Gen PR Body
+        id: body
+        uses: streetsidesoftware/actions/public/pr-body@v1
         with:
-          app_id: ${{ secrets.AUTOMATION_APP_ID }}
-          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
-      - name: Create Pull Request
-        if: env.git_status == 'dirty'
-        uses: peter-evans/create-pull-request@v5
+          title: Update Dependencies
+          path: >-
+            package.json
+
+      - name: Show Summary
+        uses: streetsidesoftware/actions/public/summary@v1
         with:
-          commit-message: "ci: Workflow Bot -- Update ALL Dependencies"
+          text: |
+            ${{ steps.body.outputs.body }}
+
+            **Status:** ${{ steps.git-status.outputs.isDirty && 'dirty' || 'clean' }}
+
+      - name: PR
+        uses: streetsidesoftware/actions/.github/actions/pr@v1
+        with:
+          commit-message: "chore: Workflow Bot -- Update ALL Dependencies"
           branch: ${{ env.NEW_BRANCH }}
           base: ${{ env.REF_BRANCH }}
-          title: "ci: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
-          token: ${{ steps.generate-token.outputs.token }}
-          body: ${{ env.git_body }}
-          delete-branch: true
+          title: "chore: Workflow Bot -- Update ALL Dependencies (${{ env.REF_BRANCH }})"
+          body: ${{ steps.body.outputs.body }}
+          app_id: ${{ secrets.AUTOMATION_APP_ID }}
+          app_private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
