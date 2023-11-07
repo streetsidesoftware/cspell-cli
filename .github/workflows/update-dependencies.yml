@@ -66,8 +66,6 @@ jobs:
           title: Update Dependencies
           path: >-
             package.json
-            action-src/package.json
-            action/package.json
 
       - name: Show Summary
         uses: streetsidesoftware/actions/public/summary@v1
