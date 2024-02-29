@@ -1,9 +1,10 @@
 FROM node:18-alpine
 
 WORKDIR /app
+ENV HOME=/home
 COPY package-lock.json package.json index.js ./
 RUN npm ci --omit=dev
-RUN npm install --global
+RUN npm install --location=global
 
 WORKDIR /workdir
 ENTRYPOINT [ "cspell-cli" ]
