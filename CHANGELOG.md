@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.0](https://github.com/streetsidesoftware/cspell-cli/compare/v8.4.0...v8.5.0) (2024-03-02)
+
+
+### Features
+
+* Update CSpell version (8.5.0) ([#458](https://github.com/streetsidesoftware/cspell-cli/issues/458)) ([de8dd9d](https://github.com/streetsidesoftware/cspell-cli/commit/de8dd9d92021150c8e0914c31ecbb8ed38853114))
+
+
+### Trivial updates and changes.
+
+* Add example on how to extend Docker Container ([#455](https://github.com/streetsidesoftware/cspell-cli/issues/455)) ([ef646eb](https://github.com/streetsidesoftware/cspell-cli/commit/ef646ebee138bd8b81b8a8aa54056945a1212803))
+
 ## [8.4.0](https://github.com/streetsidesoftware/cspell-cli/compare/v8.3.0...v8.4.0) (2024-02-20)
 
 
