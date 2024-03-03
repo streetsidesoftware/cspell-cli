@@ -15,3 +15,4 @@ jobs:
         with:
           files: "."
           incremental_files_only: false
+          check_dot_files: true
