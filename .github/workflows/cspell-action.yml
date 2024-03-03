@@ -16,13 +16,3 @@ jobs:
           files: "."
           incremental_files_only: false
           check_dot_files: true
-
-  cspellX:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: streetsidesoftware/cspell-action@v6
-        with:
-          files: "matches/nothing/here"
-          incremental_files_only: false
-          check_dot_files: true
