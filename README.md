@@ -1,5 +1,13 @@
 # cspell-cli
 
+## Usage
+
+To check all files under the current directory, run:
+
+```
+npx cspell-cli --gitignore .
+```
+
 ## Setup [pre-commit](https://pre-commit.com) Hook
 
 This repository enables using [cspell](https://github.com/streetsidesoftware/cspell) as a [pre-commit](https://pre-commit.com) hook.
