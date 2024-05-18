@@ -17,7 +17,7 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  # cspell:ignore noreply
+  # cspell:ignore noreply googleapis
 
   publish:
     runs-on: ubuntu-latest
