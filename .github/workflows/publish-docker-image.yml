@@ -65,7 +65,7 @@ jobs:
         run: echo "$META"
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@94f8f8c2eec4bc3f1d78c1755580779804cb87b2
+        uses: docker/build-push-action@31159d49c0d4756269a0940a750801a1ea5d7003
         if: ${{ env.DEBUG != 'true' }}
         with:
           context: .
