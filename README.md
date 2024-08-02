@@ -18,7 +18,7 @@ This repository enables using [cspell](https://github.com/streetsidesoftware/csp
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v8.13.0
+    rev: v8.13.1
     hooks:
       - id: cspell
 ```
