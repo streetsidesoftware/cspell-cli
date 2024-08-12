@@ -13,3 +13,4 @@
     - --no-progress
     - --no-summary
     - --gitignore
+    - --files # this needs to be the last argument so that the paths are passed correctly.
