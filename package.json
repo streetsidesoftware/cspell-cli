@@ -1,5 +1,9 @@
 {
   "name": "cspell-cli",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "version": "8.15.0",
   "description": "CLI for cspell; A Spelling Checker for Code!",
   "type": "module",
