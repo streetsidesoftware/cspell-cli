@@ -45,7 +45,7 @@ jobs:
       - name: Prettier
         run: |
           npm i
-          npx prettier .github/dependabot.yaml --write
+          npx prettier .github/dependabot.yml --write
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
