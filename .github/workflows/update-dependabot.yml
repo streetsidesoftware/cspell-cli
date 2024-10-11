@@ -44,8 +44,8 @@ jobs:
 
       - name: Prettier
         run: |
-          pnpm i
-          pnpm prettier .github/dependabot.yaml --write
+          npm i
+          npx prettier .github/dependabot.yaml --write
 
       - name: PR
         uses: streetsidesoftware/actions/.github/actions/pr@v1
