@@ -1,10 +1,16 @@
+name: " 🚀 release-please"
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
-name: " 🚀 release-please"
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
