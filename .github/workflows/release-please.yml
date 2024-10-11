@@ -46,8 +46,8 @@ jobs:
 
   publish-docker:
     permissions:
+      contents: write
       packages: write
-
     needs:
       - release-please
     uses: ./.github/workflows/publish-docker-image.yml
