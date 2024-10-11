@@ -45,6 +45,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM}}
 
   publish-docker:
+    permissions:
+      packages: write
+
     needs:
       - release-please
     uses: ./.github/workflows/publish-docker-image.yml

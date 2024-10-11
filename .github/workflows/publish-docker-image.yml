@@ -21,12 +21,13 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: "streetsidesoftware/cspell"
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     env:
       DEBUG: ${{ github.event.inputs.dryRun == 'yes'}}
