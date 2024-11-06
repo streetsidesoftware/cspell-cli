@@ -47,7 +47,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "cspell": "^8.15.5"
+    "cspell": "^8.15.7"
   },
   "devDependencies": {
     "inject-markdown": "^3.1.0",
