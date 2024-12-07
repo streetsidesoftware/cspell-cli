@@ -4,7 +4,7 @@
     "access": "public",
     "provenance": true
   },
-  "version": "8.16.0",
+  "version": "8.16.1",
   "description": "CLI for cspell; A Spelling Checker for Code!",
   "type": "module",
   "module": "index.js",
@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "inject-markdown": "^3.1.4",
-    "prettier": "^3.4.1"
+    "prettier": "^3.3.3"
   }
 }
