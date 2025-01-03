@@ -20,7 +20,17 @@ repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v8.17.0
     hooks:
-      - id: cspell
+      - id: cspell # Spell check changed files
+      - id: cspell # Spell check the commit message
+        name: check commit message spelling
+        args:
+          - --no-must-find-files
+          - --no-progress
+          - --no-summary
+          - --files
+          - .git/COMMIT_EDITMSG
+        stages: [commit-msg]
+        always_run: true # This might not be necessary.
 ```
 
 <!-- x-release-please-end -->
