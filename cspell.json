@@ -7,5 +7,5 @@
     "node_modules",
     "package-lock.json"
   ],
-  "words": ["codeql", "streetsidesoftware", "workdir"]
+  "words": ["codeql", "streetsidesoftware", "workdir", "COMMIT_EDITMSG"]
 }
