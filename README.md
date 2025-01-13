@@ -159,8 +159,8 @@ Options:
   -u, --unique                 Only output the first instance of a word not
                                found in the dictionaries.
   -e, --exclude <glob>         Exclude files matching the glob pattern. This
-                               option can be used multiple times to add
-                               multiple globs.
+                               option can be used multiple times to add multiple
+                               globs.
   --file-list <path or stdin>  Specify a list of files to be spell checked. The
                                list is filtered against the glob file patterns.
                                Note: the format is 1 file path per line.
@@ -193,8 +193,7 @@ Options:
   --gitignore                  Ignore files matching glob patterns found in
                                .gitignore files.
   --no-gitignore               Do NOT use .gitignore files.
-  --gitignore-root <path>      Prevent searching for .gitignore files past
-                               root.
+  --gitignore-root <path>      Prevent searching for .gitignore files past root.
   --validate-directives        Validate in-document CSpell directives.
   --color                      Force color.
   --no-color                   Turn off color.
@@ -248,8 +247,8 @@ Trace words -- Search for words in the configuration and dictionaries.
 Options:
   -c, --config <cspell.json>  Configuration file to use.  By default cspell
                               looks for cspell.json in the current directory.
-  --locale <locale>           Set language locales. i.e. "en,fr" for English
-                              and French, or "en-GB" for British English.
+  --locale <locale>           Set language locales. i.e. "en,fr" for English and
+                              French, or "en-GB" for British English.
   --language-id <language>    Use programming language. i.e. "php" or "scala".
   --allow-compound-words      Turn on allowCompoundWords
   --no-allow-compound-words   Turn off allowCompoundWords
@@ -280,8 +279,7 @@ Options:
 ```
 Usage: cspell check [options] <files...>
 
-Spell check file(s) and display the result. The full file is displayed in
-color.
+Spell check file(s) and display the result. The full file is displayed in color.
 
 Options:
   -c, --config <cspell.json>  Configuration file to use.  By default cspell
