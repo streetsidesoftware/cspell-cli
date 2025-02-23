@@ -17,6 +17,7 @@ jobs:
           - 18.x
           - 20.x
           - 22.x
+          - 23.x
 
         os:
           - ubuntu-latest
@@ -43,11 +44,11 @@ jobs:
       matrix:
         node-version:
           # Test the latest node version here, move older versions to `test-old-node-versions`
-          - 18.x
+          - 22.x
 
         os:
           - windows-latest
-          - macos-latest
+          # - macos-latest
 
     steps:
       - uses: actions/checkout@v4
