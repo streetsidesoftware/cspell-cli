@@ -40,7 +40,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          node-version: 18.x
+          node-version: 22.x
 
       - name: Install
         run: |
