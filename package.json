@@ -47,10 +47,10 @@
     "node": ">=20"
   },
   "dependencies": {
-    "cspell": "^9.0.2"
+    "cspell": "^9.1.2"
   },
   "devDependencies": {
     "inject-markdown": "^3.1.4",
-    "prettier": "^3.5.3"
+    "prettier": "^3.6.2"
   }
 }
