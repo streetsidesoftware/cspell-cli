@@ -14,6 +14,8 @@ Commands:
                                         result. The full file is displayed in
                                         color.
   suggestions|sug [options] [words...]  Spelling Suggestions for words.
+  init [options]                        Initialize a CSpell configuration file.
   link                                  Link dictionaries and other settings to
                                         the cspell global config.
+  dictionaries [options]                List dictionaries
   help [command]                        display help for command
