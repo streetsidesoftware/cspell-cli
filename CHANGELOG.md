@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.1.1](https://github.com/streetsidesoftware/cspell-cli/compare/v9.1.0...v9.1.1) (2025-07-13)
+
+
+### Trivial updates and changes.
+
+* Update CSpell version (9.1.5) ([#694](https://github.com/streetsidesoftware/cspell-cli/issues/694)) ([61a33b2](https://github.com/streetsidesoftware/cspell-cli/commit/61a33b2dd425ebc19509b636571b5ef2df1c3f89))
+
 ## [9.1.0](https://github.com/streetsidesoftware/cspell-cli/compare/v9.0.1...v9.1.0) (2025-07-08)
 
 
