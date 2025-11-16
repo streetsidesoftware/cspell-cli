@@ -13,7 +13,7 @@ on:
         options:
           - 'yes'
           - 'no'
-        default: 'no'
+        default: 'yes'
         required: false
       ref:
         description: 'Reference / tag to publish'
