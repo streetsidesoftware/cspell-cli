@@ -15,7 +15,17 @@ on:
           - "no"
         default: "no"
         required: false
+      ref:
+        description: "Reference / tag to publish"
+        required: false
+        type: string
+
   workflow_call:
+    inputs:
+      ref:
+        description: "Reference / tag to publish"
+        required: true
+        type: string
 
 env:
   REGISTRY: ghcr.io
@@ -35,6 +45,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
 
       - name: CSpell Version
         run: |
