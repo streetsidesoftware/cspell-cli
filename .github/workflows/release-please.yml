@@ -9,13 +9,13 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  id-token: write
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
@@ -30,19 +30,24 @@ jobs:
     needs:
       - release-please
     if: ${{ needs.release-please.outputs.release_created }}
+    permissions:
+      contents: read
+      id-token: write
     steps:
       # The logic below handles the npm publication:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22.x
 
       - run: npm ci
 
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM}}
+          NPM_CONFIG_PROVENANCE: true
 
   publish-docker:
     permissions:
@@ -51,4 +56,6 @@ jobs:
     needs:
       - release-please
     uses: ./.github/workflows/publish-docker-image.yml
+    with:
+      ref: ${{ needs.release-please.outputs.tag_name }}
     if: ${{ needs.release-please.outputs.release_created }}
