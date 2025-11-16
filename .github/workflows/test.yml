@@ -1,4 +1,4 @@
-name: "  🧪 Test"
+name: '  🧪 Test'
 on:
   pull_request:
   push:
@@ -16,13 +16,17 @@ jobs:
           # List of supported node versions (latest is tested in `test-os`)
           - 20.x
           - 22.x
-          - 23.x
-
+          - 24.x
+          - 25.x
         os:
           - ubuntu-latest
 
+        include:
+          - os: windows-latest
+            node-version: 24.x
+
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Setup
         uses: ./.github/actions/setup
@@ -36,37 +40,10 @@ jobs:
       # Ensure the repository is clean after build & test
       - run: git --no-pager diff --compact-summary --exit-code
 
-  test-os:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version:
-          # Test the latest node version here, move older versions to `test-old-node-versions`
-          - 22.x
-
-        os:
-          - windows-latest
-          # - macos-latest
-
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Setup
-        uses: ./.github/actions/setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - run: npm ci --omit=dev
-      - run: npm test
-
-      # Ensure the repository is clean after build & test
-      - run: git --no-pager diff --compact-summary --exit-code
-
   test-docker:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - run: docker build -t cspell .
-      - run: docker run -v $(pwd):/workdir cspell
+      - run: docker run -v $(pwd):/workdir cspell .

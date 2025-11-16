@@ -10,9 +10,9 @@ jobs:
   cspell:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - uses: streetsidesoftware/cspell-action@v8
         with:
-          files: "."
+          files: '.'
           incremental_files_only: false
           check_dot_files: true

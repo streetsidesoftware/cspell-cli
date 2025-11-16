@@ -1,4 +1,4 @@
-name: " 🚀 release-please"
+name: ' 🚀 release-please'
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
       id-token: write
     steps:
       # The logic below handles the npm publication:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           ref: ${{ needs.release-please.outputs.tag_name }}
       - name: Setup
