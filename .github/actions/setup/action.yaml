@@ -4,16 +4,16 @@ inputs:
   node-version:
     required: false
     description: The version of Node to use.
-    default: "22.x"
+    default: '22.x'
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Use Node.js ${{ inputs.node-version }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
       with:
-        registry-url: "https://registry.npmjs.org"
+        registry-url: 'https://registry.npmjs.org'
         node-version: ${{ inputs.node-version }}
-        cache: "npm"
+        cache: 'npm'
     - name: NPM Version
       run: npm -v;
       shell: bash

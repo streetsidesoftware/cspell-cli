@@ -17,7 +17,7 @@ changelog:
         - dev
     - title: Other Changes
       labels:
-        - "*"
+        - '*'
     - title: Maintenance
       labels:
         - chore

@@ -2,34 +2,34 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: " 📦 Publish Docker Images"
+name: ' 📦 Publish Docker Images'
 
 on:
   workflow_dispatch:
     inputs:
       dryRun:
-        description: "Dry Run"
+        description: 'Dry Run'
         type: choice
         options:
-          - "yes"
-          - "no"
-        default: "no"
+          - 'yes'
+          - 'no'
+        default: 'no'
         required: false
       ref:
-        description: "Reference / tag to publish"
+        description: 'Reference / tag to publish'
         required: false
         type: string
 
   workflow_call:
     inputs:
       ref:
-        description: "Reference / tag to publish"
+        description: 'Reference / tag to publish'
         required: true
         type: string
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "streetsidesoftware/cspell"
+  IMAGE_NAME: 'streetsidesoftware/cspell'
 
 permissions:
   contents: read
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           ref: ${{ github.event.inputs.ref || github.ref }}
 
