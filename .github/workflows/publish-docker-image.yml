@@ -49,9 +49,9 @@ jobs:
           ref: ${{ inputs.ref || github.ref }}
 
       - name: CSpell Version
+        id: cspell-version
         run: |
-          export CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json)
-          echo CSPELL_VERSION=$CSPELL_VERSION >> $GITHUB_ENV
+          echo CSPELL_VERSION=$(jq -r ".dependencies.cspell | sub(\"[_^]\"; \"\")" package.json) >> "$GITHUB_OUTPUT"
 
       - name: Log in to the Container registry
         uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef
@@ -66,7 +66,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}},value=${{ env.CSPELL_VERSION }}
+            type=semver,pattern={{version}},value=${{ steps.cspell-version.outputs.CSPELL_VERSION }}
           labels: |
             org.opencontainers.image.title=cspell
             org.opencontainers.image.description=CSpell command line spell checker for code and other documents.
@@ -74,7 +74,7 @@ jobs:
 
       - name: Log Docker metadata
         env:
-          META: $${{ toJSON(steps.meta.outputs) }}
+          META: ${{ toJSON(steps.meta.outputs) }}
         run: echo "$META"
 
       - name: Build and push Docker image
@@ -85,4 +85,18 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Summary
+        uses: streetsidesoftware/actions/public/summary@v1
+        with:
+          text: |
+            **CSpell Version:** ${{ steps.cspell-version.outputs.CSPELL_VERSION }}
+            **Docker Image:** ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            **Tags:** ${{ steps.meta.outputs.tags }}
+            **Labels:** ${{ steps.meta.outputs.labels }}
+            **ref:** ${{ inputs.ref }}
+            **github.ref:** ${{ github.ref }}
+            **Dry Run:** ${{ inputs.dryRun }}
+            **Debug:** ${{ env.DEBUG }}
+
 # cspell:ignore opencontainers
