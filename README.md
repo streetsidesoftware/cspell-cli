@@ -18,7 +18,7 @@ This repository enables using [cspell](https://github.com/streetsidesoftware/csp
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v9.3.2
+    rev: v9.3.3
     hooks:
       - id: cspell # Spell check changed files
       - id: cspell # Spell check the commit message
