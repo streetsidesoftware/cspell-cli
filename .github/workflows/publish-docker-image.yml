@@ -90,13 +90,15 @@ jobs:
         uses: streetsidesoftware/actions/public/summary@v1
         with:
           text: |
-            **CSpell Version:** ${{ steps.cspell-version.outputs.CSPELL_VERSION }}
-            **Docker Image:** ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            **Tags:** ${{ steps.meta.outputs.tags }}
-            **Labels:** ${{ steps.meta.outputs.labels }}
-            **ref:** ${{ inputs.ref }}
-            **github.ref:** ${{ github.ref }}
-            **Dry Run:** ${{ inputs.dryRun }}
-            **Debug:** ${{ env.DEBUG }}
+            ## Published Docker Image 🚀
+
+            - **CSpell Library Version:** ${{ steps.cspell-version.outputs.CSPELL_VERSION }}
+            - **Docker Image:** ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            - **Tags:** ${{ steps.meta.outputs.tags }}
+            - **Labels:** ${{ steps.meta.outputs.labels }}
+            - **ref:** ${{ inputs.ref }}
+            - **github.ref:** ${{ github.ref }}
+            - **Dry Run:** ${{ inputs.dryRun }}
+            - **Debug:** ${{ env.DEBUG }}
 
 # cspell:ignore opencontainers
