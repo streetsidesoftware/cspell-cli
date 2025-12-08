@@ -159,7 +159,8 @@ Options:
                                  the files being checked. Useful for limiting
                                  config inheritance.
   -v, --verbose                  Display more information about the files being
-                                 checked and the configuration.
+                                 checked. Add more than one -v for increased
+                                 verbosity.
   --locale <locale>              Set language locales. i.e. "en,fr" for English
                                  and French, or "en-GB" for British English.
   --language-id <file-type>      Force programming language for unknown
@@ -209,6 +210,8 @@ Options:
   --gitignore-root <path>        Prevent searching for .gitignore files past
                                  root.
   --validate-directives          Validate in-document CSpell directives.
+  --max-file-size <size>         Prevent checking large files. i.e 1MB, 50KB,
+                                 1GB
   --color                        Force color.
   --no-color                     Turn off color.
   --no-default-configuration     Do not load the default configuration and
