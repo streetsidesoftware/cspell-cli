@@ -4,7 +4,7 @@
     "access": "public",
     "provenance": true
   },
-  "version": "9.3.3",
+  "version": "9.4.0",
   "description": "CLI for cspell; A Spelling Checker for Code!",
   "type": "module",
   "module": "index.js",
