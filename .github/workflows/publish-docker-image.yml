@@ -77,6 +77,9 @@ jobs:
           META: ${{ toJSON(steps.meta.outputs) }}
         run: echo "$META"
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
+
       - name: Build and push Docker image
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83
         if: ${{ env.DEBUG != 'true' }}
