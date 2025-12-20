@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.4.0](https://github.com/streetsidesoftware/cspell-cli/compare/v9.3.3...v9.4.0) (2025-12-20)
+
+
+### Features
+
+* Add support for multiple Docker platforms ([933f78c](https://github.com/streetsidesoftware/cspell-cli/commit/933f78c6992af1b6a1d2d932ea9a2d18506263f5))
+* Update CSpell version (9.4.0) ([#741](https://github.com/streetsidesoftware/cspell-cli/issues/741)) ([3bbf55e](https://github.com/streetsidesoftware/cspell-cli/commit/3bbf55e219ea3a15f81c0507f92cb2d8421e6e2b))
+
 ## [9.3.3](https://github.com/streetsidesoftware/cspell-cli/compare/v9.3.2...v9.3.3) (2025-11-16)
 
 
