@@ -80,7 +80,7 @@ npm install -g git+https://github.com/streetsidesoftware/cspell-cli
 [Package cspell](https://github.com/streetsidesoftware/cspell-cli/pkgs/container/cspell)
 
 ```sh
-docker run -v $PWD:/workdir ghcr.io/streetsidesoftware/cspell:latest "**"
+docker run -v $PWD:/workdir ghcr.io/streetsidesoftware/cspell:latest .
 ```
 
 See [Extending the Docker Container to include German](https://github.com/streetsidesoftware/cspell-cli/tree/main/docker/german/README.md)
