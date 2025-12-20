@@ -1,5 +1,8 @@
 {
-  "files": ["**", ".*/**"],
+  "files": [
+    "**",
+    ".*/**"
+  ],
   "ignorePaths": [
     ".git",
     ".gitignore",
@@ -7,5 +10,11 @@
     "node_modules",
     "package-lock.json"
   ],
-  "words": ["codeql", "streetsidesoftware", "workdir", "COMMIT_EDITMSG"]
+  "words": [
+    "Buildx",
+    "codeql",
+    "COMMIT_EDITMSG",
+    "streetsidesoftware",
+    "workdir"
+  ]
 }
