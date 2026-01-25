@@ -1,8 +1,5 @@
 {
-  "files": [
-    "**",
-    ".*/**"
-  ],
+  "files": ["**", ".*/**"],
   "ignorePaths": [
     ".git",
     ".gitignore",
