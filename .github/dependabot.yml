@@ -18,3 +18,12 @@ updates:
       - '/.github/actions/*'
     schedule:
       interval: 'daily'
+    commit-message:
+      prefix: chore
+    groups:
+      action-dependencies-version:
+        patterns: ['*']
+        applies-to: 'version-updates'
+      action-dependencies-security:
+        patterns: ['*']
+        applies-to: 'security-updates'
