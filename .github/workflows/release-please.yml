@@ -33,12 +33,12 @@ jobs:
       id-token: write
     steps:
       # The logic below handles the npm publication:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v5
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v5
         with:
           ref: ${{ needs.release-please.outputs.tag_name }}
 
       - name: Use Node.js
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v6
         with:
           registry-url: 'https://registry.npmjs.org'
           node-version: 24.x
