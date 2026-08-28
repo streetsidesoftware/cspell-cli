@@ -8,6 +8,8 @@
 
 Add French dictionary packages using `additional_dependencies`:
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -19,6 +21,8 @@ repos:
           - '@cspell/dict-fr-fr'
           - '@cspell/dict-fr-reforme'
 ```
+
+<!-- x-release-please-end -->
 
 For a complete list of available dictionaries, see: <https://github.com/streetsidesoftware/cspell-dicts>.
 

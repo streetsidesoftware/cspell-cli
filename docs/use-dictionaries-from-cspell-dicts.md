@@ -6,7 +6,7 @@ Most dictionaries bundled with `cspell` are active by default in appropriate con
 
 To use a language dictionary:
 
-1. Add it as an `additional_dependency` in `.pre-commit-config.yaml`
+1. Add it as an `additional_dependencies` entry in `.pre-commit-config.yaml`
 2. Import it in `cspell.json`
 
 For a complete list of available dictionaries, see: <https://github.com/streetsidesoftware/cspell-dicts>.
@@ -23,6 +23,8 @@ For example: <https://github.com/streetsidesoftware/cspell-dicts/blob/main/dicti
 
 ### `.pre-commit-config.yaml`
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -33,6 +35,8 @@ repos:
         additional_dependencies:
           - '@cspell/dict-nl-nl'
 ```
+
+<!-- x-release-please-end -->
 
 ### `cspell.json`
 
