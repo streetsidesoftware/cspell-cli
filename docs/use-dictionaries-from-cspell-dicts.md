@@ -29,7 +29,7 @@ For example: <https://github.com/streetsidesoftware/cspell-dicts/blob/main/dicti
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v10.0.1
+    rev: v10.2.0
     hooks:
       - id: cspell
         additional_dependencies:
