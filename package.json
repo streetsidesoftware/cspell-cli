@@ -50,7 +50,7 @@
     "cspell": "^10.2.2"
   },
   "devDependencies": {
-    "inject-markdown": "^4.0.0",
+    "inject-markdown": "^5.0.3",
     "prettier": "^3.9.6"
   }
 }
