@@ -291,6 +291,7 @@ Options:
   --no-validate-directives    Do not validate in-document CSpell directives.
   --no-color                  Turn off color.
   --color                     Force color
+  --json                      Output results in JSON format.
   --no-exit-code              Do not return an exit code if issues are found.
   --no-default-configuration  Do not load the default configuration and
                               dictionaries.
