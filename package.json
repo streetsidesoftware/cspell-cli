@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "inject-markdown": "^6.1.0",
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.9"
   }
 }
