@@ -185,7 +185,7 @@ More Examples:
         Use a custom reporter. See API for details.
 
     cspell "*.md" --exclude CHANGELOG.md --files README.md CHANGELOG.md
-        Spell check only check "README.md" but NOT "CHANGELOG.md".
+        Spell check only "README.md" but NOT "CHANGELOG.md".
 
     cspell "/*.md" --no-must-find-files --files $FILES
         Only spell check the "/*.md" files in $FILES,
@@ -329,7 +329,7 @@ More Examples:
         Use a custom reporter. See API for details.
 
     cspell "*.md" --exclude CHANGELOG.md --files README.md CHANGELOG.md
-        Spell check only check "README.md" but NOT "CHANGELOG.md".
+        Spell check only "README.md" but NOT "CHANGELOG.md".
 
     cspell "/*.md" --no-must-find-files --files $FILES
         Only spell check the "/*.md" files in $FILES,
