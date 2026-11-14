@@ -64,6 +64,8 @@
       "releaseType": "node",
       "extra-files": [
         "README.md",
+        "docker/german/Dockerfile",
+        "docker/german/README.md",
         "docs/pre-commit-example-setup-for-french.md",
         "docs/use-dictionaries-from-cspell-dicts.md"
       ]
