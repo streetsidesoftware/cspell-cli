@@ -5,20 +5,24 @@ it is necessary to extend the container.
 
 **`Dockerfile`**
 
+<!-- x-release-please-start-version -->
+
 ```dockerfile
-FROM ghcr.io/streetsidesoftware/cspell:8.4.1
+FROM ghcr.io/streetsidesoftware/cspell:10.4.1
 
 WORKDIR /app
 # Setting HOME is necessary to set the location of CSpell's global config.
 ENV HOME=/home
 # Install the dictionaries we want
-RUN npm install @cspell/dict-de-de@3.2.0
+RUN npm install @cspell/dict-de-de@4
 # Link the dictionaries so that CSpell is aware of them by default.
 RUN cspell-cli link add @cspell/dict-de-de
 
 # Restore the working directory to the virtual directory.
 WORKDIR /workdir
 ```
+
+<!-- x-release-please-end -->
 
 ## Building
 
