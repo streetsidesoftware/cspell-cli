@@ -8,7 +8,7 @@ it is necessary to extend the container.
 <!-- x-release-please-start-version -->
 
 ```dockerfile
-FROM ghcr.io/streetsidesoftware/cspell:10.4.1
+FROM ghcr.io/streetsidesoftware/cspell:10.5.0
 
 WORKDIR /app
 # Setting HOME is necessary to set the location of CSpell's global config.
