@@ -14,7 +14,7 @@ Add French dictionary packages using `additional_dependencies`:
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v10.4.1
+    rev: v10.5.0
     hooks:
       - id: cspell
         additional_dependencies:

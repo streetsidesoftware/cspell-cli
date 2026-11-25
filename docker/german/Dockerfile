@@ -1,5 +1,5 @@
 # x-release-please-start-version
-FROM ghcr.io/streetsidesoftware/cspell:10.4.1
+FROM ghcr.io/streetsidesoftware/cspell:10.5.0
 # x-release-please-end
 
 WORKDIR /app

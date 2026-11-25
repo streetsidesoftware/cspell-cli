@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.5.0](https://github.com/streetsidesoftware/cspell-cli/compare/v10.4.1...v10.5.0) (2026-11-25)
+
+
+### Features
+
+* Update CSpell version (10.5.0) ([#858](https://github.com/streetsidesoftware/cspell-cli/issues/858)) ([fa45d58](https://github.com/streetsidesoftware/cspell-cli/commit/fa45d58202fdc41bc3fd5f3470c8c6139f2364a6))
+
+
+### Trivial updates and changes.
+
+* Require the same Node.js version as cspell (&gt;=22.18.0) ([#869](https://github.com/streetsidesoftware/cspell-cli/issues/869)) ([9703aef](https://github.com/streetsidesoftware/cspell-cli/commit/9703aefb56da49ad857edd091dff44fe47019b6f))
+* Update CSpell version (10.5.1) ([#864](https://github.com/streetsidesoftware/cspell-cli/issues/864)) ([930208c](https://github.com/streetsidesoftware/cspell-cli/commit/930208c43acf3af4fca5018c3de067dce3a883ae))
+* Update CSpell version (10.5.2) ([#867](https://github.com/streetsidesoftware/cspell-cli/issues/867)) ([37ff30f](https://github.com/streetsidesoftware/cspell-cli/commit/37ff30f3a1090225cf097a291d979e3bf1f3bd9d))
+
 ## [10.4.1](https://github.com/streetsidesoftware/cspell-cli/compare/v10.4.0...v10.4.1) (2026-11-08)
 
 
